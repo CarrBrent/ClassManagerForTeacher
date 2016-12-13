@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:id="@+id/layout_signin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        android:orientation="vertical"
+        android:padding="@dimen/content_padding" >
+
+        <LinearLayout
+            android:id="@+id/layout_TABLE1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/table_margin"
+            android:background="@color/table_background"
+            android:padding="@dimen/table_padding" >
+
+            <Button
+                android:id="@+id/btn_scan_barcode"
+                style="@style/text_black_18"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/row_height"
+                android:background="@drawable/row_selector"
+                android:gravity="center_vertical|center"
+                android:text="扫描二维码签到" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_TABLE2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/text_black_18"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:duplicateParentState="true"
+                android:gravity="center_vertical"
+                android:text="签到结果：" />
+
+            <TextView
+                android:id="@+id/tv_scan_result"
+                style="@style/text_black_18"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:duplicateParentState="true"
+                android:gravity="center_vertical" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

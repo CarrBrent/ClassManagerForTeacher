@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background" >
+
+    <LinearLayout
+        android:id="@+id/layout_CONTENT"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        android:orientation="vertical"
+        android:padding="@dimen/content_padding" >
+
+        <LinearLayout
+            android:id="@+id/layout_TABLE"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/table_margin"
+            android:background="@color/table_background"
+            android:orientation="vertical"
+            android:padding="@dimen/table_padding" >
+
+            <RelativeLayout
+                android:id="@+id/layout_username"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/row_height"
+                android:layout_marginBottom="@dimen/row_margin"
+                android:background="@drawable/row_selector"
+                android:paddingLeft="@dimen/row_padding_left"
+                android:paddingRight="@dimen/row_padding_right" >
+
+                <TextView
+                    style="@style/text_black_18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:drawableLeft="@drawable/ic_profile_nickname_normal"
+                    android:drawablePadding="4dp"
+                    android:duplicateParentState="true"
+                    android:gravity="center_vertical"
+                    android:text="@string/text_username" />
+
+                <TextView
+                    android:id="@+id/tv_username"
+                    style="@style/text_18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/iv_username"
+                    android:paddingRight="@dimen/row_padding_right"
+                    android:textColor="@color/gray" />
+
+                <ImageView
+                    android:id="@+id/iv_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:duplicateParentState="true"
+                    android:gravity="center_vertical"
+                    android:src="@drawable/go" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_gender"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/row_height"
+                android:layout_marginBottom="@dimen/row_margin"
+                android:background="@drawable/row_selector"
+                android:paddingLeft="@dimen/row_padding_left"
+                android:paddingRight="@dimen/row_padding_right" >
+
+                <TextView
+                    style="@style/text_black_18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:drawableLeft="@drawable/ic_profile_gender_normal"
+                    android:drawablePadding="4dp"
+                    android:duplicateParentState="true"
+                    android:gravity="center_vertical"
+                    android:text="@string/text_gender" />
+
+                <TextView
+                    android:id="@+id/tv_gender"
+                    style="@style/text_18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/iv_gender"
+                    android:paddingRight="@dimen/row_padding_right"
+                    android:text="男"
+                    android:textColor="@color/gray" />
+
+                <ImageView
+                    android:id="@+id/iv_gender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:duplicateParentState="true"
+                    android:gravity="center_vertical"
+                    android:src="@drawable/go" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_phone"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/row_height"
+                android:layout_marginBottom="@dimen/row_margin"
+                android:background="@drawable/row_selector"
+                android:paddingLeft="@dimen/row_padding_left"
+                android:paddingRight="@dimen/row_padding_right" >
+
+                <TextView
+                    style="@style/text_black_18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:drawableLeft="@drawable/ic_profile_tags_normal"
+                    android:drawablePadding="4dp"
+                    android:duplicateParentState="true"
+                    android:gravity="center_vertical"
+                    android:text="@string/text_phone" />
+
+                <TextView
+                    android:id="@+id/tv_phone"
+                    style="@style/text_18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/iv_phone"
+                    android:paddingRight="@dimen/row_padding_right"
+                    android:textColor="@color/gray" />
+
+                <ImageView
+                    android:id="@+id/iv_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:duplicateParentState="true"
+                    android:gravity="center_vertical"
+                    android:src="@drawable/go" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

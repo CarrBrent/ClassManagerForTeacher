@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">课程助手教师版</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="text_tab_message">消息</string>
+    <string name="text_tab_service">服务</string>
+    <string name="text_tab_profile">个人</string>
+    <string name="text_tab_setting">设置</string>
+    <string name="text_account">账号与安全</string>
+    <string name="text_notification">通知与消息</string>
+    <string name="text_privacy">隐私</string>
+    <string name="text_general">通用</string>
+    <string name="text_about">关于课程助理</string>
+    <string name="button_backward">返回</string>
+    <string name="button_submit">提交</string>
+    <string name="text_age">年龄</string>
+    <string name="text_gender">性别</string>
+    <string name="text_username">用户名</string>
+    <string name="text_nickname">昵称</string>
+    <string name="text_place">地区</string>
+    <string name="text_phone">电话</string>
+    <string name="text_login">登录</string>
+    <string name="text_learning">我想学/考</string>
+    <string name="text_education">学历层次</string>
+    <string name="text_speciality">专业</string>
+    <string name="text_credit">我的积分</string>
+    <string name="text_official_website">官方网站</string>
+    <string name="text_rate_app">去评分</string>
+    <string name="text_about_help">帮助</string>
+    <string name="text_about_feedback">反馈</string>
+    <string name="text_about_update">检查更新</string>
+    <string name="text_company">课程助理 版权所有 由哈尔滨工业大学提供技术支持</string>
+    <string name="text_copyright">Copyright &#169; 2016-2020 Zhangyushuang All Rights Reserved.</string>
+    <string name="text_exit">退&#160;出</string>
+
+</resources>
