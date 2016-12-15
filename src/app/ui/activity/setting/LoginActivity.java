@@ -31,7 +31,7 @@ public class LoginActivity extends TitleActivity implements OnClickListener{
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
-	private String url = "login.do";
+	private String url = "teacherlogin.do";
 	private HttpUtils http = new HttpUtils();
 	// 声明控件对象
 	private EditText et_name, et_pass;
@@ -95,7 +95,7 @@ public class LoginActivity extends TitleActivity implements OnClickListener{
 //		mLoginError  = (Button) findViewById(R.id.login_error);
 //		mRegister    = (Button) findViewById(R.id.register);
 		mLoginButton.setOnClickListener(this);       
-//		mLoginError.setOnClickListener(this);       
+//		mLoginError.setOnClickListener(this);     
 //		mRegister.setOnClickListener(this); 
 	}
 	private void initWatcher() {
@@ -158,8 +158,8 @@ public class LoginActivity extends TitleActivity implements OnClickListener{
 		String name = et_name.getText().toString();
 		String password = et_pass.getText().toString();
 		RequestParams params = new RequestParams();
-		params.addQueryStringParameter("SAccount",name);
-		params.addQueryStringParameter("SPwd",password);
+		params.addQueryStringParameter("tAccount",name);
+		params.addQueryStringParameter("tPwd",password);
 		final BaseInfo baseInfo = (BaseInfo)getApplication();
 
 		http.send(HttpRequest.HttpMethod.GET,
@@ -182,10 +182,7 @@ public class LoginActivity extends TitleActivity implements OnClickListener{
 				Editor editor = sharedPreferences.edit();//获取编辑器
 				editor.putString("userId", responseInfo.result);
 				editor.commit();//提交修改
-
 				Toast.makeText(getApplicationContext(), "登录成功", 1).show();
-				
-				
 				
 				finish();
 

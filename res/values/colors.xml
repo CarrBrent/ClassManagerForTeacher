@@ -35,6 +35,8 @@
     <!-- 标题栏返回按钮的背景颜色 -->
     <drawable name="button_backward_pressed">#40F64C99</drawable>
     <drawable name="button_backward_normal">#0000</drawable>
+    
+    <color name="button_background">#ff336699</color>
 
     <!-- 程序主色调 -->
     <color name="background">#f2f2f2</color>

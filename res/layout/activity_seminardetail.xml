@@ -1,139 +1,130 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/layout_CONTENT"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    android:orientation="vertical"
-    android:padding="@dimen/content_padding" >
+    android:orientation="vertical" >
+     <RelativeLayout
+        android:id="@+id/layout_TOP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
+
+        <LinearLayout
+            android:id="@+id/layout_start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/table_margin"
+            android:padding="@dimen/table_padding" >
+            <Button
+            android:id="@+id/start"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/default_button_height"
+            android:layout_marginTop="30dp"
+            
+            android:background="@color/button_background"
+            android:gravity="center"
+            android:text="@string/test_startcourse"
+            android:textColor="@android:color/white" />
+
+        </LinearLayout>
+    </RelativeLayout>
 
     <LinearLayout
-        android:id="@+id/layout_selectedclasstable"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/table_margin"
-        android:background="@color/table_background"
-        android:orientation="vertical"
-        android:padding="@dimen/table_padding" >
+        android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal" >
 
-        <RelativeLayout
-            android:id="@+id/layout_score"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/row_height"
-            android:background="@drawable/row_selector"
-            android:clickable="true"
-            android:onClick="onClick"
-            android:paddingLeft="@dimen/row_padding_left"
-            android:paddingRight="@dimen/row_padding_right" >
-
-            <TextView
-                android:id="@+id/SeId"
-                style="@style/text_black_18"
-                android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="5dp" >
+<!-- android:layout_weight 作用是确定同一个LinearLayout中 RelativeLayout所占比重，即大小比例-->
+            <RelativeLayout
+                android:id="@+id/layout_1"
+                android:padding="20dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:duplicateParentState="true"
-                android:gravity="center_vertical"
-                />
+                android:layout_weight="10"
+                android:background="#12a3d5" >
 
-            <ImageView
-                android:layout_width="wrap_content"
+                <TextView
+                    style="@style/text_white_bold_22"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="30dp"
+                    android:drawableBottom="@drawable/a90"
+                    android:gravity="center_horizontal"
+                    android:text="课堂分组" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_2"
+                android:padding="10dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_alignParentRight="true"
-                android:duplicateParentState="true"
-                android:gravity="center_vertical"
-                android:src="@drawable/go" />
-        </RelativeLayout>
+                android:layout_marginTop="10dp"
+                android:layout_weight="10"
+                android:background="#12a3d5" >
 
-        <RelativeLayout
-            android:id="@+id/layout_discuss"
+                <TextView
+                     android:drawablePadding="10dp"
+                    style="@style/text_white_bold_22"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableBottom="@drawable/a84"
+                    android:gravity="center_horizontal"
+                    android:text="练习题" />
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/row_height"
-            android:layout_marginTop="@dimen/row_margin"
-            android:background="@drawable/row_selector"
-            android:clickable="true"
-            android:onClick="onClick"
-            android:paddingLeft="@dimen/row_padding_left"
-            android:paddingRight="@dimen/row_padding_right" >
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="5dp" >
 
-            <TextView
-                android:id="@+id/CId"
-                style="@style/text_black_18"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:id="@+id/layout_3"
+                android:padding="20dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:duplicateParentState="true"
-                android:gravity="center_vertical"
-                />
+                android:layout_weight="10"
+                android:background="#12a3d5" >
 
-            <ImageView
-                android:layout_width="wrap_content"
+                <TextView
+                    style="@style/text_white_bold_22"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="30dp"
+                    android:drawableBottom="@drawable/a90"
+                    android:gravity="center_horizontal"
+                    android:text="课堂评价" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_4"
+                android:padding="10dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_alignParentRight="true"
-                android:duplicateParentState="true"
-                android:gravity="center_vertical"
-                android:src="@drawable/go" />
-        </RelativeLayout>
+                android:layout_marginTop="10dp"
+                android:layout_weight="10"
+                android:background="#12a3d5" >
 
-        <RelativeLayout
-            android:id="@+id/layout_exercises"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/row_height"
-            android:layout_marginTop="@dimen/row_margin"
-            android:background="@drawable/row_selector"
-            android:clickable="true"
-            android:onClick="onClick"
-            android:paddingLeft="@dimen/row_padding_left"
-            android:paddingRight="@dimen/row_padding_right" >
+                <TextView
+                    android:drawablePadding="10dp"
+                    style="@style/text_white_bold_22"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableBottom="@drawable/a84"
+                    android:gravity="center_horizontal"
+                    android:text="选课分班" />
+            </RelativeLayout>
+        </LinearLayout>
 
-            <TextView
-                android:id="@+id/SeName"
-                style="@style/text_black_18"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:duplicateParentState="true"
-                android:gravity="center_vertical"
-                />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentRight="true"
-                android:duplicateParentState="true"
-                android:gravity="center_vertical"
-                android:src="@drawable/go" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/layout_group"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/row_height"
-            android:layout_marginBottom="@dimen/row_margin"
-            android:layout_marginTop="@dimen/row_margin"
-            android:background="@drawable/row_selector"
-            android:clickable="true"
-            android:onClick="onClick"
-            android:paddingLeft="@dimen/row_padding_left"
-            android:paddingRight="@dimen/row_padding_right" >
-
-            <TextView
-                android:id="@+id/SeTheme"
-                style="@style/text_black_18"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:duplicateParentState="true"
-                android:gravity="center_vertical"
-                />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentRight="true"
-                android:duplicateParentState="true"
-                android:gravity="center_vertical"
-                android:src="@drawable/go" />
-        </RelativeLayout>
-
-      
     </LinearLayout>
-  
 
 </LinearLayout>

@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/tab_main_color"
+    android:background="@color/background"
     android:orientation="vertical" >
 
     <RelativeLayout
@@ -46,7 +46,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="8"
-                android:background="#ef505d" >
+                android:background="#12a3d5" >
 
                 <TextView
                     style="@style/text_white_bold_22"
@@ -65,7 +65,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
                 android:layout_weight="10"
-                android:background="#47c3c8" >
+                android:background="#12a3d5" >
 
                 <TextView
                      android:drawablePadding="10dp"
@@ -109,7 +109,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
                 android:layout_weight="10"
-                android:background="#f0ef9a" >
+                android:background="#12a3d5" >
 
                 <TextView
                      android:drawablePadding="10dp"

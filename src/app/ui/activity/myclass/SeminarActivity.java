@@ -64,23 +64,23 @@ public class SeminarActivity extends TitleActivity implements OnClickListener{
 					int arg2, long arg3) {
 				// TODO Auto-generated method stub
 				Map map = (Map)listView.getItemAtPosition(arg2);
-				int SeId = (Integer) map.get("seId");
-				int CId = (Integer) map.get("cId");
-				String SeName = (String) map.get("seName");
-				String SeTheme = (String) map.get("seTheme");
-				String SeTime = map.get("seTime").toString();
-				int SeUp = (Integer) map.get("seUp");
-				int SeDown = (Integer) map.get("seDown");
+				int seId = (Integer) map.get("seId");
+				int cId = (Integer) map.get("cId");
+				String seName = (String) map.get("seName");
+				String seTheme = (String) map.get("seTheme");
+				String seTime = map.get("seTime").toString();
+				int seUp = (Integer) map.get("seUp");
+				int seDown = (Integer) map.get("seDown");
 				Intent intent = new Intent();
 				intent.setClass(SeminarActivity.this, SeminarDetailActivity.class);
 				Bundle bundle = new Bundle();
-				bundle.putInt("SeId",SeId);
-				bundle.putInt("CId",CId);
-				bundle.putString("SeName",SeName);
-				bundle.putString("SeTheme",SeTheme);
-				bundle.putString("SeTime",SeTime);
-				bundle.putInt("SeUp",SeUp);
-				bundle.putInt("SeDown",SeDown);
+				bundle.putInt("seId",seId);
+				bundle.putInt("cId",cId);
+				bundle.putString("seName",seName);
+				bundle.putString("seTheme",seTheme);
+				bundle.putString("seTime",seTime);
+				bundle.putInt("seUp",seUp);
+				bundle.putInt("seDown",seDown);
 				intent.putExtras(bundle);
 				startActivity(intent);
 
