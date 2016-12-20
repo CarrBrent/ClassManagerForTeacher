@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import app.ui.TitleActivity;
+import app.ui.activity.barcode.SignInActivity;
 
 public class SeminarDetailActivity extends TitleActivity implements OnClickListener{
 	/* (non-Javadoc)
@@ -18,7 +19,6 @@ public class SeminarDetailActivity extends TitleActivity implements OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
     	
-    	
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seminardetail);
         showBackwardView(R.string.button_backward, true);
@@ -29,7 +29,9 @@ public class SeminarDetailActivity extends TitleActivity implements OnClickListe
         seName = bundle.getString("seName");
         setTitle(seName);
         start = (Button) findViewById(R.id.start);
+        //为控件添加监听器
         start.setOnClickListener(this);
+        findViewById(R.id.layout_1).setOnClickListener(this);
         
     }
     @Override
@@ -44,6 +46,15 @@ public class SeminarDetailActivity extends TitleActivity implements OnClickListe
 			bundle.putString("seName",seName);
 			intent.putExtras(bundle);
 			startActivity(intent);
+			break;
+		case R.id.layout_1:
+			Intent groupingintent = new Intent();
+			groupingintent.setClass(SeminarDetailActivity.this, GroupingActivity.class);
+			Bundle groupingbundle = new Bundle();
+			groupingbundle.putInt("seId",seId);
+			groupingbundle.putString("seName",seName);
+			groupingintent.putExtras(groupingbundle);
+			startActivity(groupingintent);
 			break;
 
 		default:
