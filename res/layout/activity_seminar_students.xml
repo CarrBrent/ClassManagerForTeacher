@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_CONTENT"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    android:padding="@dimen/content_padding" >
+
+    <LinearLayout
+        android:id="@+id/layout_TABLE"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/table_margin"
+        android:background="@color/table_background"
+        android:padding="@dimen/table_padding" >
+
+        <RelativeLayout
+            android:id="@+id/layout_account"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/row_height"
+            android:background="@drawable/row_selector"
+            android:paddingLeft="@dimen/row_padding_left"
+            android:paddingRight="@dimen/row_padding_right" >
+
+            <TextView
+                android:id="@+id/tv_1"
+                style="@style/text_black_18"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:duplicateParentState="true"
+                android:gravity="center_vertical" 
+                android:text="已签到学生人数： "/>
+
+            <TextView
+                android:id="@+id/signInNo"
+                style="@style/text_black_18"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@id/tv_1"
+                android:duplicateParentState="true"
+                android:gravity="center_vertical" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/table_margin"
+        android:background="@color/table_background"
+        android:padding="@dimen/table_padding" >
+
+        <ListView
+            android:id="@+id/listview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/table_padding" />
+    </LinearLayout>
+
+</LinearLayout>
