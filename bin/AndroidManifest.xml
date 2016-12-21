@@ -75,6 +75,24 @@
             android:windowSoftInputMode="stateAlwaysHidden" >
         </activity>
         
+        <!-- 研讨课评价相关 -->
+        <activity
+            android:name="app.ui.activity.evaluate.EvaluateActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+        <activity
+            android:name="app.ui.activity.evaluate.InGroupEvaluateActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+        <activity
+            android:name="app.ui.activity.evaluate.OutGroupEvaluateActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+        
+        
         <!-- 研讨课相关 -->
         <activity
             android:name="app.ui.activity.myclass.SeminarActivity"
