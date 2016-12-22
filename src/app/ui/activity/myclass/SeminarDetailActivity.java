@@ -9,6 +9,7 @@ import android.widget.Button;
 import app.ui.TitleActivity;
 import app.ui.activity.barcode.SignInActivity;
 import app.ui.activity.evaluate.EvaluateActivity;
+import app.ui.activity.exercises.ExerciseActivity;
 
 public class SeminarDetailActivity extends TitleActivity implements OnClickListener{
 	/* (non-Javadoc)
@@ -59,6 +60,15 @@ public class SeminarDetailActivity extends TitleActivity implements OnClickListe
 			groupingbundle.putString("seName",seName);
 			groupingintent.putExtras(groupingbundle);
 			startActivity(groupingintent);
+			break;
+		case R.id.layout_2:
+			Intent exerciseintent = new Intent();
+			exerciseintent.setClass(SeminarDetailActivity.this, ExerciseActivity.class);
+			Bundle exercisebundle = new Bundle();
+			exercisebundle.putInt("seId",seId);
+			exercisebundle.putString("seName",seName);
+			exerciseintent.putExtras(exercisebundle);
+			startActivity(exerciseintent);
 			break;
 		case R.id.layout_3:
 			Intent evaluateintent = new Intent();
