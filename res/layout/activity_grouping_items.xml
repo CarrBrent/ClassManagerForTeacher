@@ -15,21 +15,23 @@
         android:layout_alignParentLeft="true"
         android:duplicateParentState="true"
         android:gravity="center_vertical" />
+    
     <TextView
-        android:id="@+id/stNames"
         style="@style/text_black_18"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_toRightOf="@id/grName"
         android:duplicateParentState="true"
-        android:gravity="center_vertical" />
-
-    <ImageView
+        android:gravity="center_vertical" 
+        android:text=" 组员："/>
+    
+    <TextView
+        android:id="@+id/stNames"
+        style="@style/text_black_18"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"
         android:duplicateParentState="true"
-        android:gravity="center_vertical"
-        android:src="@drawable/go" />
+        android:gravity="center_vertical" />
 
 </RelativeLayout>
