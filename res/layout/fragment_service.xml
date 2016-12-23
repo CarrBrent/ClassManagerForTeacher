@@ -55,7 +55,7 @@
                     android:drawablePadding="30dp"
                     android:drawableBottom="@drawable/a90"
                     android:gravity="center_horizontal"
-                    android:text="课程签到" />
+                    android:text="学生选课" />
             </RelativeLayout>
 
             <RelativeLayout

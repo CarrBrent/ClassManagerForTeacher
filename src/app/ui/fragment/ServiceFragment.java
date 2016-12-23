@@ -21,6 +21,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import app.ui.BaseFragment;
 import app.ui.activity.barcode.SignInActivity;
+import app.ui.activity.courseselect.CourseSelectMyClassActivity;
 import app.ui.activity.myclass.MyClassActivity;
 import app.ui.adapter.ViewPaperAdapter;
 
@@ -40,7 +41,7 @@ public class ServiceFragment extends BaseFragment implements Runnable{
 		public void onClick(View v) {
 			switch (v.getId()) {
 			case R.id.layout_1:
-				startActivity(new Intent(getActivity(), SignInActivity.class));
+				startActivity(new Intent(getActivity(), CourseSelectMyClassActivity.class));
 				break;
 			case R.id.layout_3:
 				startActivity(new Intent(getActivity(), MyClassActivity.class));

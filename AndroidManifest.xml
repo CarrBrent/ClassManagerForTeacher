@@ -137,6 +137,12 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" >
         </activity>
+        <!-- 选课相关 -->
+        <activity
+            android:name="app.ui.activity.courseselect.CourseSelectMyClassActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
 
         <!-- barcode -->
         <activity
