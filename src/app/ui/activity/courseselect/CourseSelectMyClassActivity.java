@@ -71,7 +71,7 @@ public class CourseSelectMyClassActivity extends TitleActivity implements OnClic
 				Map map = (Map)listView.getItemAtPosition(arg2);
 				int cid = (Integer)map.get("CId");
 				Intent intent = new Intent();
-				intent.setClass(CourseSelectMyClassActivity.this, LoginActivity.class);
+				intent.setClass(CourseSelectMyClassActivity.this, CourseSelectResultActivity.class);
 				Bundle bundle = new Bundle();
 				bundle.putInt("CId",cid);
 				intent.putExtras(bundle);
