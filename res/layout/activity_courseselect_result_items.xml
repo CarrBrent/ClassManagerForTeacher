@@ -6,21 +6,42 @@
     android:background="@color/background"
     android:orientation="vertical"
     android:padding="@dimen/content_padding" >
-    <TextView
-        android:id="@+id/seName"
-        style="@style/text_black_18"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:duplicateParentState="true"
-        android:gravity="center_vertical" />
-    <TextView
-        android:id="@+id/studentNo"
-        style="@style/text_black_18"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_toRightOf="@id/seName"
-        android:duplicateParentState="true"
-        android:gravity="center_vertical" />
+
+    <RelativeLayout
+        android:id="@+id/layout_account"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/row_height"
+        android:background="@color/background"
+        android:paddingLeft="@dimen/row_padding_left"
+        android:paddingRight="@dimen/row_padding_right" >
+
+        <TextView
+            android:id="@+id/seName"
+            style="@style/text_black_18"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:duplicateParentState="true"
+            android:gravity="center_vertical" />
+
+         <TextView
+            style="@style/text_black_18"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/seName"
+            android:duplicateParentState="true"
+            android:text=" 已选人数："
+            android:gravity="center_vertical"/>
+         
+         <TextView
+            android:id="@+id/studentNo"
+            style="@style/text_black_18"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:duplicateParentState="true"
+            android:gravity="center_vertical"/>
+        
+    </RelativeLayout>
 
 </LinearLayout>
