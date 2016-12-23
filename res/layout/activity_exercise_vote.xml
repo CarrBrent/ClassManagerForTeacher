@@ -39,14 +39,14 @@
                     android:textColor="@android:color/white" />
 
                 <Button
-                    android:id="@+id/endVote"
+                    android:id="@+id/refreshVote"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/default_button_height"
                     android:layout_marginLeft="5dip"
                     android:layout_marginRight="5dip"
                     android:layout_weight="1"
                     android:background="@color/button_background"
-                    android:text="重置"
+                    android:text="刷新"
                     android:textColor="@android:color/white" />
             </LinearLayout>
         </RelativeLayout>
