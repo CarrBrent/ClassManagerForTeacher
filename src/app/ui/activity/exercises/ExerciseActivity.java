@@ -40,7 +40,7 @@ public class ExerciseActivity extends TitleActivity implements OnClickListener{
         switch (v.getId()) {
 		case R.id.layout_1:
 			Intent ingroupintent = new Intent();
-			ingroupintent.setClass(ExerciseActivity.this, InGroupEvaluateActivity.class);
+			ingroupintent.setClass(ExerciseActivity.this, ExerciseTimeLimitActivity.class);
 			Bundle ingroupbundle = new Bundle();
 			ingroupbundle.putInt("seId",seId);
 			ingroupbundle.putString("seName",seName);
