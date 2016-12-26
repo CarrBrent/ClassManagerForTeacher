@@ -49,7 +49,7 @@ public class ExerciseActivity extends TitleActivity implements OnClickListener{
 			break;
 		case R.id.layout_2:
 			Intent outgroupintent = new Intent();
-			outgroupintent.setClass(ExerciseActivity.this, OutGroupEvaluateActivity.class);
+			outgroupintent.setClass(ExerciseActivity.this, ExerciseRushActivity.class);
 			Bundle outgroupbundle = new Bundle();
 			outgroupbundle.putInt("seId",seId);
 			outgroupbundle.putString("seName",seName);

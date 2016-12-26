@@ -156,7 +156,7 @@ public class ExerciseTimeLimitActivity extends TitleActivity implements OnClickL
 		if (time.length() != 0 & number.length()!=0) {
 			starttimelimitexercise(time,number);
 		}else {
-			Toast.makeText(ExerciseTimeLimitActivity.this, "请输入答题时间和答题数量",1).show();;
+			Toast.makeText(ExerciseTimeLimitActivity.this, "请输入答题时间和答题数量",1).show();
 		}
 
 	}
@@ -167,7 +167,7 @@ public class ExerciseTimeLimitActivity extends TitleActivity implements OnClickL
 		if (time.length() != 0 & number.length()!=0) {
 			starttimelimitexercise(time,number);
 		}else {
-			Toast.makeText(ExerciseTimeLimitActivity.this, "未设置默认答题数量和默认答题时间",1).show();;
+			Toast.makeText(ExerciseTimeLimitActivity.this, "未设置默认答题数量和默认答题时间",1).show();
 		}
 		
 	}

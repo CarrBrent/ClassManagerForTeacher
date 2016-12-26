@@ -1,0 +1,142 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/layout_TABLE1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/table_margin"
+        android:background="@color/table_background"
+        android:orientation="vertical"
+        android:padding="@dimen/table_padding" >
+
+        <RelativeLayout
+            android:id="@+id/layout_student"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/row_height"
+            android:background="@drawable/row_selector"
+            android:paddingLeft="@dimen/row_padding_left"
+            android:paddingRight="@dimen/row_padding_right" >
+
+            <TextView
+                style="@style/text_black_18"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:duplicateParentState="true"
+                android:gravity="center_vertical"
+                android:text="回答问题学生信息" />
+
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/layout_name"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/row_height"
+            android:background="@drawable/row_selector"
+            android:paddingLeft="@dimen/row_padding_left"
+            android:paddingRight="@dimen/row_padding_right" >
+
+            <TextView
+                android:id="@+id/tv_name"
+                style="@style/text_black_18"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:duplicateParentState="true"
+                android:gravity="center_vertical"
+                android:text="姓名：           " />
+
+          <TextView
+              android:id="@+id/name"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_alignParentTop="true"
+              android:layout_toRightOf="@+id/tv_name"
+              android:gravity="center_vertical"
+              android:maxLength="20" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/layout_id"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/row_height"
+            android:background="@drawable/row_selector"
+            android:paddingLeft="@dimen/row_padding_left"
+            android:paddingRight="@dimen/row_padding_right" >
+
+            <TextView
+                android:id="@+id/tv_id"
+                style="@style/text_black_18"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:duplicateParentState="true"
+                android:gravity="center_vertical"
+                android:text="学号：           " />
+
+          <TextView
+              android:id="@+id/sId"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_alignParentTop="true"
+              android:layout_toRightOf="@+id/tv_id"
+              android:gravity="center_vertical"
+              android:maxLength="20" />
+
+        </RelativeLayout>
+
+      
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layout_TABLE2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/table_margin"
+        android:background="@color/table_background"
+        android:orientation="vertical"
+        android:padding="@dimen/table_padding" >
+
+        <RelativeLayout
+            android:id="@+id/layout_general"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/row_height"
+            android:background="@drawable/row_selector"
+            android:paddingLeft="@dimen/row_padding_left"
+            android:paddingRight="@dimen/row_padding_right" >
+
+            <LinearLayout
+                android:id="@+id/layout_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/submit"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/default_button_height"
+                    android:layout_marginLeft="5dip"
+                    android:layout_marginRight="5dip"
+                    android:layout_weight="1"
+                    android:background="@color/button_background"
+                    android:text="确定"
+                    android:textColor="@android:color/white" />
+
+                <Button
+                    android:id="@+id/rush"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/default_button_height"
+                    android:layout_marginLeft="5dip"
+                    android:layout_marginRight="5dip"
+                    android:layout_weight="1"
+                    android:background="@color/button_background"
+                    android:text="抢答/重新抢答"
+                    android:textColor="@android:color/white" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>
