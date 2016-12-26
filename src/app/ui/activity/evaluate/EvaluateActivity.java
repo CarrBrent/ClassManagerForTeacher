@@ -58,7 +58,7 @@ public class EvaluateActivity extends TitleActivity implements OnClickListener{
 			break;
 		case R.id.layout_3:
 			Intent teacherintent = new Intent();
-			teacherintent.setClass(EvaluateActivity.this, GroupingActivity.class);
+			teacherintent.setClass(EvaluateActivity.this, TeacherEvaluateActivity.class);
 			Bundle teacherbundle = new Bundle();
 			teacherbundle.putInt("seId",seId);
 			teacherbundle.putString("seName",seName);

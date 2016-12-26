@@ -96,7 +96,7 @@
             android:windowSoftInputMode="stateAlwaysHidden" >
         </activity>
         
-        <!-- 研评价相关 -->
+        <!-- 评价相关 -->
         <activity
             android:name="app.ui.activity.evaluate.EvaluateActivity"
             android:screenOrientation="portrait"
@@ -109,6 +109,16 @@
         </activity>
         <activity
             android:name="app.ui.activity.evaluate.OutGroupEvaluateActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+        <activity
+            android:name="app.ui.activity.evaluate.TeacherEvaluateActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+        <activity
+            android:name="app.ui.activity.evaluate.TeacherEvaluateDetailActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" >
         </activity>
