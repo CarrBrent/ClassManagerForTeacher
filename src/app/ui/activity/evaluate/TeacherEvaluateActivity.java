@@ -74,10 +74,14 @@ public class TeacherEvaluateActivity extends TitleActivity implements OnClickLis
 
 				Map map = (Map)listView.getItemAtPosition(arg2);
 				int sId = (Integer)map.get("sId");
+				String sName = (String)map.get("sName");
 				Intent intent = new Intent();
 				intent.setClass(TeacherEvaluateActivity.this, TeacherEvaluateDetailActivity.class);
 				Bundle bundle = new Bundle();
 				bundle.putInt("sId",sId);
+				bundle.putInt("seId",seId);
+				bundle.putString("sName",sName);
+				bundle.putString("seName",seName);
 				intent.putExtras(bundle);
 				startActivity(intent);
 

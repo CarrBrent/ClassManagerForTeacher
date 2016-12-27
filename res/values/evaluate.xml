@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="evaluate_teacher">  
+        <item>优秀</item>  
+        <item>良好</item>          
+        <item>中等</item>  
+        <item>合格</item>          
+        <item>不合格</item>          
+    </string-array> 
+    
+</resources>
