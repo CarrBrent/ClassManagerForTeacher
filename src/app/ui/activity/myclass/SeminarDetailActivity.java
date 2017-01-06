@@ -17,6 +17,7 @@ public class SeminarDetailActivity extends TitleActivity implements OnClickListe
      */
 	private Button start;
 	private int seId;
+	private int cId;
 	private String seName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,7 @@ public class SeminarDetailActivity extends TitleActivity implements OnClickListe
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
         seId = bundle.getInt("seId");
+        cId = bundle.getInt("cId");
         seName = bundle.getString("seName");
         setTitle(seName);
         start = (Button) findViewById(R.id.start);
@@ -48,6 +50,7 @@ public class SeminarDetailActivity extends TitleActivity implements OnClickListe
 			intent.setClass(SeminarDetailActivity.this, ShowBarCodeActivity.class);
 			Bundle bundle = new Bundle();
 			bundle.putInt("seId",seId);
+			bundle.putInt("cId",cId);
 			bundle.putString("seName",seName);
 			intent.putExtras(bundle);
 			startActivity(intent);
@@ -56,7 +59,9 @@ public class SeminarDetailActivity extends TitleActivity implements OnClickListe
 			Intent groupingintent = new Intent();
 			groupingintent.setClass(SeminarDetailActivity.this, GroupingActivity.class);
 			Bundle groupingbundle = new Bundle();
+			
 			groupingbundle.putInt("seId",seId);
+			groupingbundle.putInt("cId",cId);
 			groupingbundle.putString("seName",seName);
 			groupingintent.putExtras(groupingbundle);
 			startActivity(groupingintent);
@@ -66,6 +71,7 @@ public class SeminarDetailActivity extends TitleActivity implements OnClickListe
 			exerciseintent.setClass(SeminarDetailActivity.this, ExerciseActivity.class);
 			Bundle exercisebundle = new Bundle();
 			exercisebundle.putInt("seId",seId);
+			exercisebundle.putInt("cId",cId);
 			exercisebundle.putString("seName",seName);
 			exerciseintent.putExtras(exercisebundle);
 			startActivity(exerciseintent);
@@ -75,6 +81,7 @@ public class SeminarDetailActivity extends TitleActivity implements OnClickListe
 			evaluateintent.setClass(SeminarDetailActivity.this, EvaluateActivity.class);
 			Bundle evaluatebundle = new Bundle();
 			evaluatebundle.putInt("seId",seId);
+			evaluatebundle.putInt("cId",cId);
 			evaluatebundle.putString("seName",seName);
 			evaluateintent.putExtras(evaluatebundle);
 			startActivity(evaluateintent);

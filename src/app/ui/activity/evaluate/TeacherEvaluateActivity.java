@@ -38,6 +38,7 @@ public class TeacherEvaluateActivity extends TitleActivity implements OnClickLis
 	private String findstudentsbyseidUrl;
 	private BaseInfo baseInfo;
 
+	private int cId;
 	private int seId;
 	private String seName;
 
@@ -54,6 +55,7 @@ public class TeacherEvaluateActivity extends TitleActivity implements OnClickLis
 		Intent intent = this.getIntent();
 		Bundle bundle = intent.getExtras();
 		seId = bundle.getInt("seId");
+		cId = bundle.getInt("cId");
 		seName = bundle.getString("seName");
 		setTitle(seName);
 
@@ -78,6 +80,7 @@ public class TeacherEvaluateActivity extends TitleActivity implements OnClickLis
 				Intent intent = new Intent();
 				intent.setClass(TeacherEvaluateActivity.this, TeacherEvaluateDetailActivity.class);
 				Bundle bundle = new Bundle();
+				bundle.putInt("cId",cId);
 				bundle.putInt("sId",sId);
 				bundle.putInt("seId",seId);
 				bundle.putString("sName",sName);

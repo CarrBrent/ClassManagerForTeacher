@@ -15,6 +15,7 @@ public class EvaluateActivity extends TitleActivity implements OnClickListener{
      * @see android.app.Activity#onCreate(android.os.Bundle)
      */
 	private int seId;
+	private int cId;
 	private String seName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,7 @@ public class EvaluateActivity extends TitleActivity implements OnClickListener{
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
         seId = bundle.getInt("seId");
+        cId = bundle.getInt("cId");
         seName = bundle.getString("seName");
         setTitle(seName);
         //为控件添加监听器
@@ -43,6 +45,7 @@ public class EvaluateActivity extends TitleActivity implements OnClickListener{
 			ingroupintent.setClass(EvaluateActivity.this, InGroupEvaluateActivity.class);
 			Bundle ingroupbundle = new Bundle();
 			ingroupbundle.putInt("seId",seId);
+			ingroupbundle.putInt("cId",cId);
 			ingroupbundle.putString("seName",seName);
 			ingroupintent.putExtras(ingroupbundle);
 			startActivity(ingroupintent);
@@ -52,6 +55,7 @@ public class EvaluateActivity extends TitleActivity implements OnClickListener{
 			outgroupintent.setClass(EvaluateActivity.this, OutGroupEvaluateActivity.class);
 			Bundle outgroupbundle = new Bundle();
 			outgroupbundle.putInt("seId",seId);
+			outgroupbundle.putInt("cId",cId);
 			outgroupbundle.putString("seName",seName);
 			outgroupintent.putExtras(outgroupbundle);
 			startActivity(outgroupintent);
@@ -61,6 +65,7 @@ public class EvaluateActivity extends TitleActivity implements OnClickListener{
 			teacherintent.setClass(EvaluateActivity.this, TeacherEvaluateActivity.class);
 			Bundle teacherbundle = new Bundle();
 			teacherbundle.putInt("seId",seId);
+			teacherbundle.putInt("cId",cId);
 			teacherbundle.putString("seName",seName);
 			teacherintent.putExtras(teacherbundle);
 			startActivity(teacherintent);

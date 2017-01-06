@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.lidroid.xutils.HttpUtils;
@@ -24,10 +25,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import app.bean.Evaluation;
 import app.ui.TitleActivity;
 import app.util.BaseInfo;
 
@@ -37,6 +37,7 @@ public class TeacherEvaluateDetailActivity extends TitleActivity implements OnCl
 	 */
 	private int seId;
 	private int sId;
+	private int cId;
 	private String seName;
 	private String sName;
 	private TextView tvSName; 
@@ -66,10 +67,21 @@ public class TeacherEvaluateDetailActivity extends TitleActivity implements OnCl
 		tvSId = (TextView) findViewById(R.id.sId);
 		submit = (Button) findViewById(R.id.submit);
 		listView=(ListView)this.findViewById(R.id.listview); 
+		
+		Intent intent = this.getIntent();
+		Bundle bundle = intent.getExtras();
+		seId = bundle.getInt("seId");
+		sId = bundle.getInt("sId");
+		cId = bundle.getInt("cId");
+		seName = bundle.getString("seName");
+		sName = bundle.getString("sName");
+		setTitle(seName);
+		tvSId.setText(Integer.toString(sId));
+		tvSName.setText(sName);
 
 		//通过访问服务器，获取数据
 		RequestParams params = new RequestParams();
-		params.addQueryStringParameter("cId", "12" );//暂时写死，之后需要改成每个页面之间传递数据时把cId也传递过来
+		params.addQueryStringParameter("cId", Integer.toString(cId));
 		params.addQueryStringParameter("eeName", "教师评价" );
 		baseInfo = (BaseInfo)getApplication();
 		findteacherevaluatekeysUrl = baseInfo.getUrl()+findteacherevaluatekeys;
@@ -78,15 +90,7 @@ public class TeacherEvaluateDetailActivity extends TitleActivity implements OnCl
 
 		submit.setOnClickListener(this);
 
-		Intent intent = this.getIntent();
-		Bundle bundle = intent.getExtras();
-		seId = bundle.getInt("seId");
-		sId = bundle.getInt("sId");
-		seName = bundle.getString("seName");
-		sName = bundle.getString("sName");
-		setTitle(seName);
-		tvSId.setText(Integer.toString(sId));
-		tvSName.setText(sName);
+		
 
 	}
 	@Override
@@ -119,11 +123,8 @@ public class TeacherEvaluateDetailActivity extends TitleActivity implements OnCl
 			@Override
 			public void onSuccess(ResponseInfo<String> responseInfo) {				
 				List<Map<String, Object>> keys = getMaps("keys", responseInfo.result);
-
-				SimpleAdapter adapter = new SimpleAdapter(TeacherEvaluateDetailActivity.this,keys,R.layout.activity_evaluate_teacher_detail_items,
-						new String[]{"key"},
-						new int[]{R.id.tv_key_point});
-				listView.setAdapter(adapter);
+				SpinnerAdapter spinnerAdapter = new SpinnerAdapter(TeacherEvaluateDetailActivity.this, keys, R.layout.activity_evaluate_teacher_detail_items);
+				listView.setAdapter(spinnerAdapter);
 			}
 			@Override
 			public void onFailure(HttpException error, String msg) {
@@ -133,9 +134,29 @@ public class TeacherEvaluateDetailActivity extends TitleActivity implements OnCl
 	}
 	public void submit() {
 		// TODO Auto-generated method stub
+		
 		RequestParams params = new RequestParams();
-		params.addQueryStringParameter("seId",Integer.toString(seId));
-		params.addQueryStringParameter("sId",Integer.toString(sId));
+		SpinnerAdapter adapter;
+		Map<String,Object> key;
+		List<Evaluation> evaluations = new ArrayList<Evaluation>();
+		
+		
+		
+		for (int i = 0; i < listView.getCount(); i++) {
+			adapter =(SpinnerAdapter)listView.getAdapter();
+			key =adapter.getItem(i);
+			evaluations.add(new Evaluation(seId,sId,(Integer)key.get("keyId"),(String)key.get("value")));
+		
+		}
+		
+		try {
+			System.out.println(createJsonString("evaluations",evaluations));
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		params.addQueryStringParameter("evaluations",evaluations.toString());
+		
 		http.send(HttpRequest.HttpMethod.GET,
 				teacherevaluatesubmiturl,
 				params,
@@ -157,6 +178,14 @@ public class TeacherEvaluateDetailActivity extends TitleActivity implements OnCl
 			}
 		});
 	}
+	public static String  createJsonString(String key,Object value) throws JSONException{  
+
+		net.sf.json.JSONObject jsonObject=new net.sf.json.JSONObject();  
+		jsonObject.put(key, value); 
+		String aString = jsonObject.toString();
+		return aString;  
+
+	} 
 	private static List<Map<String, Object>> getMaps(String key,  
 			String jsonString) {  
 		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();  
@@ -186,8 +215,6 @@ public class TeacherEvaluateDetailActivity extends TitleActivity implements OnCl
 		}  
 		return list;  
 	}  
-
-
 
 
 	@Override
