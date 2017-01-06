@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_key_point"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/row_height"
+    android:background="@drawable/row_selector"
+    android:paddingLeft="@dimen/row_padding_left"
+    android:paddingRight="@dimen/row_padding_right" >
+
+    <TextView
+        android:id="@+id/tv_key_point"
+        style="@style/text_black_18"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:duplicateParentState="true"
+        android:gravity="center_vertical"
+         />
+
+    <Spinner
+        android:id="@+id/key_point"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_edittext_height"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/tv_key_point"
+        android:entries="@array/evaluate_teacher" />
+
+</RelativeLayout>

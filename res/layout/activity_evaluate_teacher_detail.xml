@@ -79,86 +79,12 @@
         android:orientation="vertical"
         android:padding="@dimen/table_padding" >
 
-        <RelativeLayout
-            android:id="@+id/layout_key_point"
+        <ListView
+            android:id="@+id/listview"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/row_height"
-            android:background="@drawable/row_selector"
-            android:paddingLeft="@dimen/row_padding_left"
-            android:paddingRight="@dimen/row_padding_right" >
-
-            <TextView
-                android:id="@+id/tv_key_point"
-                style="@style/text_black_18"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentLeft="true"
-                android:duplicateParentState="true"
-                android:gravity="center_vertical"
-                android:text="知识点掌握情况：" />
-
-            <Spinner
-                android:id="@+id/key_point"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/default_edittext_height"
-                android:layout_alignParentTop="true"
-                android:layout_toRightOf="@+id/tv_key_point"
-                android:entries="@array/evaluate_teacher" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/layout_positivity"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/row_height"
-            android:background="@drawable/row_selector"
-            android:paddingLeft="@dimen/row_padding_left"
-            android:paddingRight="@dimen/row_padding_right" >
-
-            <TextView
-                android:id="@+id/tv_positivity"
-                style="@style/text_black_18"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentLeft="true"
-                android:duplicateParentState="true"
-                android:gravity="center_vertical"
-                android:text="学习积极性评价：" />
-
-            <Spinner
-                android:id="@+id/positivity"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/default_edittext_height"
-                android:layout_alignParentTop="true"
-                android:layout_toRightOf="@+id/tv_positivity"
-                android:entries="@array/evaluate_teacher" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/layout_communicate"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/row_height"
-            android:background="@drawable/row_selector"
-            android:paddingLeft="@dimen/row_padding_left"
-            android:paddingRight="@dimen/row_padding_right" >
-
-            <TextView
-                android:id="@+id/tv_communicate"
-                style="@style/text_black_18"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentLeft="true"
-                android:duplicateParentState="true"
-                android:gravity="center_vertical"
-                android:text="交流能力评价：    " />
-
-            <Spinner
-                android:id="@+id/communicate"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/default_edittext_height"
-                android:layout_alignParentTop="true"
-                android:layout_toRightOf="@+id/tv_communicate"
-                android:entries="@array/evaluate_teacher" />
-        </RelativeLayout>
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/table_padding" />
     </LinearLayout>
 
     <LinearLayout
