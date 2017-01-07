@@ -7,6 +7,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+
+
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -67,7 +70,7 @@ public class TeacherEvaluateDetailActivity extends TitleActivity implements OnCl
 		tvSId = (TextView) findViewById(R.id.sId);
 		submit = (Button) findViewById(R.id.submit);
 		listView=(ListView)this.findViewById(R.id.listview); 
-		
+
 		Intent intent = this.getIntent();
 		Bundle bundle = intent.getExtras();
 		seId = bundle.getInt("seId");
@@ -90,7 +93,7 @@ public class TeacherEvaluateDetailActivity extends TitleActivity implements OnCl
 
 		submit.setOnClickListener(this);
 
-		
+
 
 	}
 	@Override
@@ -98,7 +101,12 @@ public class TeacherEvaluateDetailActivity extends TitleActivity implements OnCl
 		super.onClick(v);//实现父类的onClick方法这样才可使使左上角的返回按钮生效
 		switch (v.getId()) {
 		case R.id.submit:
-			submit();
+			try {
+				submit();
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			break;
 
 		default:
@@ -132,31 +140,25 @@ public class TeacherEvaluateDetailActivity extends TitleActivity implements OnCl
 		});
 
 	}
-	public void submit() {
+	public void submit() throws JSONException {
 		// TODO Auto-generated method stub
-		
+
 		RequestParams params = new RequestParams();
 		SpinnerAdapter adapter;
 		Map<String,Object> key;
 		List<Evaluation> evaluations = new ArrayList<Evaluation>();
-		
-		
-		
+
+
+
 		for (int i = 0; i < listView.getCount(); i++) {
 			adapter =(SpinnerAdapter)listView.getAdapter();
 			key =adapter.getItem(i);
 			evaluations.add(new Evaluation(seId,sId,(Integer)key.get("keyId"),(String)key.get("value")));
-		
+
 		}
-		
-		try {
-			System.out.println(createJsonString("evaluations",evaluations));
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		params.addQueryStringParameter("evaluations",evaluations.toString());
-		
+
+		params.addQueryStringParameter("evaluations",listToJson(evaluations));
+
 		http.send(HttpRequest.HttpMethod.GET,
 				teacherevaluatesubmiturl,
 				params,
@@ -178,26 +180,37 @@ public class TeacherEvaluateDetailActivity extends TitleActivity implements OnCl
 			}
 		});
 	}
-	public static String  createJsonString(String key,Object value) throws JSONException{  
+	public String listToJson(List<Evaluation> evaluations) throws JSONException {
+		if(null == evaluations){
+			return "";
+		}
+		JSONArray json = new JSONArray();
+		JSONObject jsonObject = new JSONObject();
+		for(Evaluation evaluation : evaluations){
+			JSONObject jo = new JSONObject();
+			jo.put("seId", evaluation.getSeId());
+			jo.put("eeId", evaluation.getEeId());
+			jo.put("sId", evaluation.getsId());
+			jo.put("evalRank", evaluation.getEvalRank());
+			json.put(jo);
+		}
+		jsonObject.put("evaluation", json);
+		return jsonObject.toString();
+	}
+	
 
-		net.sf.json.JSONObject jsonObject=new net.sf.json.JSONObject();  
-		jsonObject.put(key, value); 
-		String aString = jsonObject.toString();
-		return aString;  
-
-	} 
 	private static List<Map<String, Object>> getMaps(String key,  
 			String jsonString) {  
 		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();  
 
 		try {  
-			JSONObject jsonObject = new JSONObject(jsonString);  
+			JSONObject jsonObject = new JSONObject(jsonString);
 			JSONArray mapsArray = jsonObject.getJSONArray(key);  
 			for (int i = 0; i < mapsArray.length(); i++) {  
 				JSONObject jsonObject2 = mapsArray.getJSONObject(i);  
 				Map<String, Object> map = new HashMap<String, Object>();  
 				// 查看Map中的键值对的key值  
-				Iterator<String> iterator = jsonObject2.keys();  
+				Iterator<String> iterator = jsonObject2.keys();
 
 				while (iterator.hasNext()) {  
 					String json_key = iterator.next();  
