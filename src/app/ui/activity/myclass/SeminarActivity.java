@@ -65,7 +65,7 @@ public class SeminarActivity extends TitleActivity implements OnClickListener{
 				// TODO Auto-generated method stub
 				Map map = (Map)listView.getItemAtPosition(arg2);
 				int seId = (Integer) map.get("seId");
-				int cId = (Integer) map.get("cId");
+				int cId = (Integer) map.get("cid");
 				String seName = (String) map.get("seName");
 				String seTheme = (String) map.get("seTheme");
 				String seTime = map.get("seTime").toString();
