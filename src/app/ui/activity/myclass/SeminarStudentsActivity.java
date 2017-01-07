@@ -32,7 +32,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import app.ui.TitleActivity;
 import app.util.BaseInfo;
 
-public class SeminarSAtudentsActivity extends TitleActivity implements OnClickListener{
+public class SeminarStudentsActivity extends TitleActivity implements OnClickListener{
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
@@ -127,8 +127,8 @@ public class SeminarSAtudentsActivity extends TitleActivity implements OnClickLi
 				//如果访问成功则从返回值responseInfo中获取students
 				List<Map<String, Object>> students = getMaps("students", responseInfo.result);
 
-				SimpleAdapter adapter = new SimpleAdapter(SeminarSAtudentsActivity.this,students,R.layout.activity_seminar_students_items,
-						new String[]{"sName","sId"},
+				SimpleAdapter adapter = new SimpleAdapter(SeminarStudentsActivity.this,students,R.layout.activity_seminar_students_items,
+						new String[]{"sname","sid"},
 						new int[]{R.id.sName,R.id.sId});
 				listView.setAdapter(adapter);
 				signInNo.setText(Integer.toString(students.size()));

@@ -75,7 +75,7 @@ public class ShowBarCodeActivity extends TitleActivity implements OnClickListene
         super.onClick(v);//实现父类的onClick方法这样才可使使左上角的返回按钮生效
         switch (v.getId()) {
 		case R.id.showstudents:
-			Intent newIntent = new Intent(ShowBarCodeActivity.this,SeminarSAtudentsActivity.class);
+			Intent newIntent = new Intent(ShowBarCodeActivity.this,SeminarStudentsActivity.class);
 			Bundle bundle = new Bundle();
 			bundle.putInt("seId",seId);
 			bundle.putString("seName",seName);
