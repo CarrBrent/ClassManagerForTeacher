@@ -56,7 +56,7 @@ public class CourseSelectMyClassActivity extends TitleActivity implements OnClic
 
 		//通过访问服务器，获取数据
 		RequestParams params = new RequestParams();
-		params.addQueryStringParameter("TId", "1");
+		params.addQueryStringParameter("TId", "1");//教师Id暂时是写死的
 		final BaseInfo baseInfo = (BaseInfo)getApplication();
 		listView=(ListView)this.findViewById(R.id.listview); 
 		GetData(baseInfo.getUrl()+url, params);
@@ -69,7 +69,7 @@ public class CourseSelectMyClassActivity extends TitleActivity implements OnClic
 					int arg2, long arg3) {
 				// TODO Auto-generated method stub
 				Map map = (Map)listView.getItemAtPosition(arg2);
-				int cid = (Integer)map.get("CId");
+				int cid = (Integer)map.get("cid");
 				Intent intent = new Intent();
 				intent.setClass(CourseSelectMyClassActivity.this, CourseSelectResultActivity.class);
 				Bundle bundle = new Bundle();
@@ -139,7 +139,7 @@ public class CourseSelectMyClassActivity extends TitleActivity implements OnClic
 				List<Map<String, Object>> myclass = getMaps("classes", responseInfo.result);
 
 				SimpleAdapter adapter = new SimpleAdapter(CourseSelectMyClassActivity.this,myclass,R.layout.activity_myclass_items,
-						new String[]{"CName"},
+						new String[]{"cname"},
 						new int[]{R.id.CName});
 				listView.setAdapter(adapter);
 			}

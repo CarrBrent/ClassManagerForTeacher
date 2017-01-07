@@ -47,7 +47,7 @@ public class SeminarActivity extends TitleActivity implements OnClickListener{
         
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
-        String CId = Integer.toString(bundle.getInt("CId"));
+        String CId = Integer.toString(bundle.getInt("cid"));
 		//通过访问服务器，获取数据
 		RequestParams params = new RequestParams();
 		params.addQueryStringParameter("CId",CId);

@@ -68,11 +68,11 @@ public class MyClassActivity extends TitleActivity implements OnClickListener{
 					int arg2, long arg3) {
 				// TODO Auto-generated method stub
 				Map map = (Map)listView.getItemAtPosition(arg2);
-				int cid = (Integer)map.get("CId");
+				int cid = (Integer)map.get("cid");
 				Intent intent = new Intent();
 				intent.setClass(MyClassActivity.this, SeminarActivity.class);
 				Bundle bundle = new Bundle();
-				bundle.putInt("CId",cid);
+				bundle.putInt("cid",cid);
 				intent.putExtras(bundle);
 				startActivity(intent);
 
@@ -138,7 +138,7 @@ public class MyClassActivity extends TitleActivity implements OnClickListener{
 				List<Map<String, Object>> myclass = getMaps("classes", responseInfo.result);
 
 				SimpleAdapter adapter = new SimpleAdapter(MyClassActivity.this,myclass,R.layout.activity_myclass_items,
-						new String[]{"CName"},
+						new String[]{"cname"},
 						new int[]{R.id.CName});
 				listView.setAdapter(adapter);
 			}
