@@ -9,10 +9,14 @@ import java.util.List;
 
 
 
+
+
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.lidroid.xutils.HttpUtils;
+import com.lidroid.xutils.db.annotation.Id;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.ResponseInfo;
@@ -31,6 +35,7 @@ import lecho.lib.hellocharts.view.ColumnChartView;
 import myclass.manager.teacher.R;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
@@ -49,7 +54,8 @@ public class ExerciseVoteActivity extends TitleActivity implements OnClickListen
 	private boolean hasLabels = true;
 	private boolean hasLabelForSelected = false;
 	
-	
+	private int voteId;
+	private int seId;
 	private HttpUtils http = new HttpUtils();
 	private Button start;
 	private Button end;
@@ -65,7 +71,9 @@ public class ExerciseVoteActivity extends TitleActivity implements OnClickListen
 
 		// 设置缓存1秒,1秒内直接返回上次成功请求的结果
 		http.configCurrentHttpCacheExpiry(1000);
-		
+		Intent intent = this.getIntent();
+        Bundle bundle = intent.getExtras();
+        seId = bundle.getInt("seId");
 
 		mColumnChartView = (ColumnChartView) findViewById(R.id.column);
 		mColumnChartView.setOnValueTouchListener(new ValueTouchListener());
@@ -81,12 +89,14 @@ public class ExerciseVoteActivity extends TitleActivity implements OnClickListen
 		
 		
 	}
+	public void setVoteId(int voteId) {
+		this.voteId = voteId;
+	}
 	public void onClick(View v) {
 		super.onClick(v);//实现父类的onClick方法这样才可使使左上角的返回按钮生效
 		switch (v.getId()) {
 		case R.id.startVote:
 			startVote();
-			generateData();
 			break;
 		case R.id.endVote:
 			endVote();
@@ -101,9 +111,8 @@ public class ExerciseVoteActivity extends TitleActivity implements OnClickListen
 
 	}
 	private void startVote() {
-		RequestParams params = new RequestParams();
 		final BaseInfo baseInfo = (BaseInfo)getApplication();
-
+		RequestParams params = new RequestParams();
 		http.send(HttpRequest.HttpMethod.GET,
 				baseInfo.getUrl()+startVoteUrl,
 				params,
@@ -119,8 +128,15 @@ public class ExerciseVoteActivity extends TitleActivity implements OnClickListen
 
 			@Override
 			public void onSuccess(ResponseInfo<String> responseInfo) {
-				
-
+				JSONObject jsonObject;
+				try {
+					jsonObject = new JSONObject(responseInfo.result);
+					setVoteId((Integer)jsonObject.get("voteId"));
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				generateData();
 			}
 			@Override
 			public void onFailure(HttpException error, String msg) {
@@ -155,8 +171,8 @@ public class ExerciseVoteActivity extends TitleActivity implements OnClickListen
 	}
 	private void generateData() {
 		RequestParams params = new RequestParams();
-//		params.addQueryStringParameter("tAccount",name);
-//		params.addQueryStringParameter("tPwd",password);
+		params.addQueryStringParameter("seId",Integer.toString(seId));
+		params.addQueryStringParameter("voteId",Integer.toString(voteId));
 		final BaseInfo baseInfo = (BaseInfo)getApplication();
 
 		http.send(HttpRequest.HttpMethod.GET,
