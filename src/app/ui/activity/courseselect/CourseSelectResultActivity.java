@@ -35,8 +35,10 @@ public class CourseSelectResultActivity extends TitleActivity implements OnClick
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
 	private ListView listView;
-	private Button grouping;
+	private Button start;
+	private Button end;
 	private Button submit;
+	private String endCourseSelectUrl = "endcourseselect.do";
 	private String startCourseSelectUrl = "startcourseselect.do";
 	private String refreshCourseSelectUrl = "findseminarstudentsnumberbycid.do";
 	private HttpUtils http = new HttpUtils();
@@ -56,9 +58,11 @@ public class CourseSelectResultActivity extends TitleActivity implements OnClick
 		cId = bundle.getInt("cId");
 		setTitle("学生选课");
 
-		grouping = (Button)this.findViewById(R.id.start);
+		start = (Button)this.findViewById(R.id.start);
+		end = (Button)this.findViewById(R.id.end);
 		submit = (Button)this.findViewById(R.id.refresh);
-		grouping.setOnClickListener(this);
+		start.setOnClickListener(this);
+		end.setOnClickListener(this);
 		submit.setOnClickListener(this);
 
 		listView=(ListView)this.findViewById(R.id.listview); 
@@ -80,6 +84,14 @@ public class CourseSelectResultActivity extends TitleActivity implements OnClick
 			StartCourseSelect(baseInfo.getUrl()+startCourseSelectUrl, params);
 			//通过访问服务器，获取数据
 			GetData(baseInfo.getUrl()+refreshCourseSelectUrl, params);
+			break;
+		case R.id.end:
+			//设置访问服务器时需要传递的参数
+			RequestParams endparams = new RequestParams();
+			endparams.addQueryStringParameter("cId",Integer.toString(cId));
+			//通过访问服务器，关闭选课功能
+			StartCourseSelect(baseInfo.getUrl()+endCourseSelectUrl, endparams);
+			finish();
 			break;
 		case R.id.refresh:
 			//设置访问服务器时需要传递的参数
