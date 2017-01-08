@@ -175,7 +175,6 @@ public class ExerciseTimeLimitActivity extends TitleActivity implements OnClickL
 	public void starttimelimitexercise(final String time,String number) {
 		RequestParams params = new RequestParams();
 		params.addQueryStringParameter("seId",Integer.toString(seId));
-		params.addQueryStringParameter("time",time);
 		params.addQueryStringParameter("number",number);
 		http.send(HttpRequest.HttpMethod.GET,
 				starturl,
