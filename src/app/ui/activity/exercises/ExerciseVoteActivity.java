@@ -48,15 +48,15 @@ public class ExerciseVoteActivity extends TitleActivity implements OnClickListen
 	private boolean hasAxesNames = true;
 	private boolean hasLabels = true;
 	private boolean hasLabelForSelected = false;
-	private int dataType = DEFAULT_DATA;
 	
 	
 	private HttpUtils http = new HttpUtils();
 	private Button start;
+	private Button end;
 	private Button refresh;
 	private String startVoteUrl="startvote.do";
+	private String endVoteUrl="endvote.do";
 	private String getVoteData="getvotedata.do";
-	private BaseInfo BaseInfo;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -71,8 +71,10 @@ public class ExerciseVoteActivity extends TitleActivity implements OnClickListen
 		mColumnChartView.setOnValueTouchListener(new ValueTouchListener());
 		
 		start = (Button) findViewById(R.id.startVote);
+		end  = (Button) findViewById(R.id.endVote);
 		refresh = (Button) findViewById(R.id.refreshVote);
 		
+		end.setOnClickListener(this);
 		start.setOnClickListener(this);
 		refresh.setOnClickListener(this);
 		
@@ -86,6 +88,9 @@ public class ExerciseVoteActivity extends TitleActivity implements OnClickListen
 			startVote();
 			generateData();
 			break;
+		case R.id.endVote:
+			endVote();
+			break;
 		case R.id.refreshVote:
 			generateData();
 			break;
@@ -97,8 +102,6 @@ public class ExerciseVoteActivity extends TitleActivity implements OnClickListen
 	}
 	private void startVote() {
 		RequestParams params = new RequestParams();
-//		params.addQueryStringParameter("tAccount",name);
-//		params.addQueryStringParameter("tPwd",password);
 		final BaseInfo baseInfo = (BaseInfo)getApplication();
 
 		http.send(HttpRequest.HttpMethod.GET,
@@ -118,6 +121,32 @@ public class ExerciseVoteActivity extends TitleActivity implements OnClickListen
 			public void onSuccess(ResponseInfo<String> responseInfo) {
 				
 
+			}
+			@Override
+			public void onFailure(HttpException error, String msg) {
+			}
+		});
+	}
+	private void endVote() {
+		RequestParams params = new RequestParams();
+		final BaseInfo baseInfo = (BaseInfo)getApplication();
+		
+		http.send(HttpRequest.HttpMethod.GET,
+				baseInfo.getUrl()+endVoteUrl,
+				params,
+				new RequestCallBack<String>() {
+			
+			@Override
+			public void onStart() {
+			}
+			
+			@Override
+			public void onLoading(long total, long current, boolean isUploading) {
+			}
+			
+			@Override
+			public void onSuccess(ResponseInfo<String> responseInfo) {
+				finish();
 			}
 			@Override
 			public void onFailure(HttpException error, String msg) {
@@ -170,7 +199,6 @@ public class ExerciseVoteActivity extends TitleActivity implements OnClickListen
 		hasAxesNames = true;
 		hasLabels = false;
 		hasLabelForSelected = false;
-		dataType = DEFAULT_DATA;
 		mColumnChartView.setValueSelectionEnabled(hasLabelForSelected);
 	}
 	private void generateDefaultData(int a,int b,int c,int d) {
