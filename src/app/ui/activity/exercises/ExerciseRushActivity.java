@@ -12,6 +12,7 @@ import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
 
+import android.R.integer;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -26,20 +27,26 @@ import app.ui.TitleActivity;
 import app.util.BaseInfo;
 
 public class ExerciseRushActivity extends TitleActivity implements OnClickListener{
+	private Button rerush;
 	private Button start;
 	private Button submit;
 	private HttpUtils http = new HttpUtils();
-	
+
 	private BaseInfo baseInfo;
+	private String rerushString = "reexerciserush.do";
 	private String startString = "startexerciserush.do";
-	private String submitDtring = "exerciserushsubmit.do";
+	private String submitString = "exerciserushsubmit.do";
+	private String rerushurl;
 	private String starturl;
 	private String submiturl;
 
 	private String seName;
 	private String seId;
+	private String rushId;
 	private TextView tvName;
 	private TextView tvSId;
+
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -47,11 +54,12 @@ public class ExerciseRushActivity extends TitleActivity implements OnClickListen
 		showBackwardView(R.string.button_backward, true);
 
 		// 设置缓存1秒,1秒内直接返回上次成功请求的结果
-		http.configCurrentHttpCacheExpiry(1000);
+		http.configCurrentHttpCacheExpiry(100);
 		//获取URL
 		baseInfo = (BaseInfo)getApplication();
 		starturl = baseInfo.getUrl()+startString;
-		submiturl = baseInfo.getUrl()+submitDtring;
+		submiturl = baseInfo.getUrl()+submitString;
+		rerushurl = baseInfo.getUrl()+rerushString;
 
 		Intent intent = this.getIntent();
 		Bundle bundle = intent.getExtras();
@@ -61,17 +69,25 @@ public class ExerciseRushActivity extends TitleActivity implements OnClickListen
 
 		tvName = (TextView)this.findViewById(R.id.name);
 		tvSId = (TextView)this.findViewById(R.id.sId);
-		
+
+		rerush = (Button)this.findViewById(R.id.rerush);
 		start = (Button)this.findViewById(R.id.rush);
 		submit = (Button)this.findViewById(R.id.submit);
+		rerush.setOnClickListener(this);
 		start.setOnClickListener(this);
 		submit.setOnClickListener(this);
 
+	}
+	public void setRushId(String rushId) {
+		this.rushId = rushId;
 	}
 	@Override
 	public void onClick(View v) {
 		super.onClick(v);//实现父类的onClick方法这样才可使使左上角的返回按钮生效
 		switch (v.getId()) {
+		case R.id.rerush:
+			rerush();
+			break;
 		case R.id.rush:
 			start();
 			break;
@@ -93,18 +109,59 @@ public class ExerciseRushActivity extends TitleActivity implements OnClickListen
 
 			@Override
 			public void onStart() {
-				Toast.makeText(ExerciseRushActivity.this, "抢答开始",1).show();
 			}
 			@Override
 			public void onLoading(long total, long current, boolean isUploading) {
+				Toast.makeText(ExerciseRushActivity.this, "等待抢答",1).show();
 			}
 			@Override
 			public void onSuccess(ResponseInfo<String> responseInfo) {
+
 				try {
 					JSONObject jsonObject = new JSONObject(responseInfo.result);
 					String name = (String) jsonObject.get("name");
 					String sId = (String) jsonObject.get("sId");
-					
+					String rushId = (String) jsonObject.get("rushId");
+					setRushId(rushId);
+					tvName.setText(name);
+					tvSId.setText(sId);
+
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+			}
+			@Override
+			public void onFailure(HttpException error, String msg) {
+			}
+		});
+	}
+	public void rerush() {
+		RequestParams params = new RequestParams();
+		params.addQueryStringParameter("seId",seId);
+		params.addQueryStringParameter("rushId",rushId);
+		http.send(HttpRequest.HttpMethod.GET,
+				rerushurl,
+				params,
+				new RequestCallBack<String>() {
+			
+			@Override
+			public void onStart() {
+			}
+			@Override
+			public void onLoading(long total, long current, boolean isUploading) {
+				Toast.makeText(ExerciseRushActivity.this, "等待抢答",1).show();
+			}
+			@Override
+			public void onSuccess(ResponseInfo<String> responseInfo) {
+				
+				try {
+					JSONObject jsonObject = new JSONObject(responseInfo.result);
+					String name = (String) jsonObject.get("name");
+					String sId = (String) jsonObject.get("sId");
+					String rushId = (String) jsonObject.get("rushId");
+					setRushId(rushId);
 					tvName.setText(name);
 					tvSId.setText(sId);
 					
@@ -122,22 +179,24 @@ public class ExerciseRushActivity extends TitleActivity implements OnClickListen
 	public void submit() {
 		RequestParams params = new RequestParams();
 		params.addQueryStringParameter("seId",seId);
+		params.addQueryStringParameter("rushId",rushId);
 		params.addQueryStringParameter("sId",tvSId.getText().toString());
 		http.send(HttpRequest.HttpMethod.GET,
 				submiturl,
 				params,
 				new RequestCallBack<String>() {
-			
+
 			@Override
 			public void onStart() {
 			}
 			@Override
 			public void onLoading(long total, long current, boolean isUploading) {
+
 			}
 			@Override
 			public void onSuccess(ResponseInfo<String> responseInfo) {
-				Toast.makeText(ExerciseRushActivity.this, "抢答成功",1).show();
-				
+				Toast.makeText(ExerciseRushActivity.this, "提交成功",1).show();
+
 			}
 			@Override
 			public void onFailure(HttpException error, String msg) {
@@ -145,6 +204,6 @@ public class ExerciseRushActivity extends TitleActivity implements OnClickListen
 		});
 	}
 
-	
+
 
 }
