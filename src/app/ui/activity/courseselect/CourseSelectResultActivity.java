@@ -41,7 +41,7 @@ public class CourseSelectResultActivity extends TitleActivity implements OnClick
 	private String refreshCourseSelectUrl = "findseminarstudentsnumberbycid.do";
 	private HttpUtils http = new HttpUtils();
 
-	private String cId;
+	private int cId;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -53,7 +53,7 @@ public class CourseSelectResultActivity extends TitleActivity implements OnClick
 
 		Intent intent = this.getIntent();
 		Bundle bundle = intent.getExtras();
-		cId = bundle.getString("CId");
+		cId = bundle.getInt("cId");
 		setTitle("学生选课");
 
 		grouping = (Button)this.findViewById(R.id.start);
@@ -75,7 +75,7 @@ public class CourseSelectResultActivity extends TitleActivity implements OnClick
 		case R.id.start:
 			//设置访问服务器时需要传递的参数
 			RequestParams params = new RequestParams();
-			params.addQueryStringParameter("cId",cId);
+			params.addQueryStringParameter("cId",Integer.toString(cId));
 			//通过访问服务器，开启选课功能
 			StartCourseSelect(baseInfo.getUrl()+startCourseSelectUrl, params);
 			//通过访问服务器，获取数据
@@ -84,7 +84,7 @@ public class CourseSelectResultActivity extends TitleActivity implements OnClick
 		case R.id.refresh:
 			//设置访问服务器时需要传递的参数
 			RequestParams refreshparams = new RequestParams();
-			refreshparams.addQueryStringParameter("cId",cId);	
+			refreshparams.addQueryStringParameter("cId",Integer.toString(cId));	
 			//通过访问服务器，获取数据
 			GetData(baseInfo.getUrl()+refreshCourseSelectUrl, refreshparams);
 			break;

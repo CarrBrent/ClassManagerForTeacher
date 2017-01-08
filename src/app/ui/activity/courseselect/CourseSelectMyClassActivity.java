@@ -73,7 +73,7 @@ public class CourseSelectMyClassActivity extends TitleActivity implements OnClic
 				Intent intent = new Intent();
 				intent.setClass(CourseSelectMyClassActivity.this, CourseSelectResultActivity.class);
 				Bundle bundle = new Bundle();
-				bundle.putInt("CId",cid);
+				bundle.putInt("cId",cid);
 				intent.putExtras(bundle);
 				startActivity(intent);
 
