@@ -1,5 +1,8 @@
 package app.ui.fragment;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.RequestParams;
@@ -11,6 +14,7 @@ import myclass.manager.teacher.R;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,7 +26,7 @@ import app.ui.activity.setting.LoginActivity;
 import app.util.BaseInfo;
 
 public class ProfileFragment extends BaseFragment implements OnClickListener {
-	private String url = "finduserbyid.do";
+	private String url = "findteacherbyid.do";
 	private HttpUtils http = new HttpUtils();
 	TextView username= null;
 	TextView gender = null;
@@ -54,11 +58,11 @@ public class ProfileFragment extends BaseFragment implements OnClickListener {
 		gender = (TextView) view.findViewById(R.id.tv_gender);
 		phone = (TextView) view.findViewById(R.id.tv_phone);
 		//查看文件username 如果没有username的id则登录，否则显示个人的信息
-		SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("user", Context.MODE_PRIVATE);
-		String userId = sharedPreferences.getString("userId", "null");
+		SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("teacher", Context.MODE_PRIVATE);
+		String tId = sharedPreferences.getString("tId", "null");
 
 		RequestParams params = new RequestParams();
-		params.addQueryStringParameter("SId",userId);
+		params.addQueryStringParameter("tId",tId);
 		final BaseInfo baseInfo = (BaseInfo)this.getActivity().getApplication();
 		http.send(HttpRequest.HttpMethod.GET,
 				baseInfo.getUrl()+url,
@@ -75,7 +79,17 @@ public class ProfileFragment extends BaseFragment implements OnClickListener {
 
 			@Override
 			public void onSuccess(ResponseInfo<String> responseInfo) {
-				username.setText(responseInfo.result);
+				JSONObject jsonObject;
+				try {
+					
+					jsonObject = new JSONObject(responseInfo.result);
+					String tId=(String)jsonObject.get("tId");
+					username.setText(tId);
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
 
 			}
 			@Override

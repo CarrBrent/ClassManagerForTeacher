@@ -1,5 +1,8 @@
 package app.ui.activity.setting;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import myclass.manager.teacher.R;
 
 import com.lidroid.xutils.HttpUtils;
@@ -18,6 +21,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Printer;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -177,11 +181,21 @@ public class LoginActivity extends TitleActivity implements OnClickListener{
 
 			@Override
 			public void onSuccess(ResponseInfo<String> responseInfo) {
+				JSONObject jsonObject;
+				try {
+					
+					jsonObject = new JSONObject(responseInfo.result);
+					SharedPreferences sharedPreferences = getSharedPreferences("teacher", Context.MODE_PRIVATE);
+					Editor editor = sharedPreferences.edit();//获取编辑器
+					String tId=(String)jsonObject.get("tId");
+					editor.putString("tId",tId);
+					editor.commit();//提交修改
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				
-				SharedPreferences sharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE);
-				Editor editor = sharedPreferences.edit();//获取编辑器
-				editor.putString("userId", responseInfo.result);
-				editor.commit();//提交修改
+				
 				Toast.makeText(getApplicationContext(), "登录成功", 1).show();
 				
 				finish();

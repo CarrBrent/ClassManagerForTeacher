@@ -22,7 +22,9 @@ import com.lidroid.xutils.http.client.HttpRequest;
 
 import myclass.manager.teacher.R;
 import android.R.integer;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -53,10 +55,13 @@ public class CourseSelectMyClassActivity extends TitleActivity implements OnClic
 		setContentView(R.layout.activity_courseselect_myclass);
 		setTitle("学生选课");
 		showBackwardView(R.string.button_backward, true);//设置左上角返回箭头生效
+		//查看文件teacher 查看用户id
+		SharedPreferences sharedPreferences = this.getSharedPreferences("teacher", Context.MODE_PRIVATE);
+		String tId = sharedPreferences.getString("tId", "0");
 
 		//通过访问服务器，获取数据
 		RequestParams params = new RequestParams();
-		params.addQueryStringParameter("TId", "1");//教师Id暂时是写死的
+		params.addQueryStringParameter("TId", tId);
 		final BaseInfo baseInfo = (BaseInfo)getApplication();
 		listView=(ListView)this.findViewById(R.id.listview); 
 		GetData(baseInfo.getUrl()+url, params);
