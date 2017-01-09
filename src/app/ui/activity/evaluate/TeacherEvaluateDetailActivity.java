@@ -194,7 +194,7 @@ public class TeacherEvaluateDetailActivity extends TitleActivity implements OnCl
 			jo.put("evalRank", evaluation.getEvalRank());
 			json.put(jo);
 		}
-		jsonObject.put("evaluation", json);
+		jsonObject.put("evaluations", json);
 		return jsonObject.toString();
 	}
 	
