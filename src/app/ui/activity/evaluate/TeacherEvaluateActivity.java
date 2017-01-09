@@ -75,8 +75,8 @@ public class TeacherEvaluateActivity extends TitleActivity implements OnClickLis
 					int arg2, long arg3) {
 
 				Map map = (Map)listView.getItemAtPosition(arg2);
-				int sId = (Integer)map.get("sId");
-				String sName = (String)map.get("sName");
+				int sId = (Integer)map.get("sid");
+				String sName = (String)map.get("sname");
 				Intent intent = new Intent();
 				intent.setClass(TeacherEvaluateActivity.this, TeacherEvaluateDetailActivity.class);
 				Bundle bundle = new Bundle();
@@ -111,8 +111,8 @@ public class TeacherEvaluateActivity extends TitleActivity implements OnClickLis
 				List<Map<String, Object>> students = getMaps("students", responseInfo.result);
 
 				SimpleAdapter adapter = new SimpleAdapter(TeacherEvaluateActivity.this,students,R.layout.activity_evaluate_teacher_items,
-						new String[]{"sName","sId","status"},
-						new int[]{R.id.sName,R.id.sId,R.id.status});
+						new String[]{"sname","sid"},
+						new int[]{R.id.sName,R.id.sId});
 				listView.setAdapter(adapter);
 			}
 			@Override
