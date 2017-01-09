@@ -146,7 +146,7 @@ public class ExerciseVoteActivity extends TitleActivity implements OnClickListen
 	private void endVote() {
 		RequestParams params = new RequestParams();
 		final BaseInfo baseInfo = (BaseInfo)getApplication();
-		
+		params.addQueryStringParameter("vqid", Integer.toString(voteId));
 		http.send(HttpRequest.HttpMethod.GET,
 				baseInfo.getUrl()+endVoteUrl,
 				params,
