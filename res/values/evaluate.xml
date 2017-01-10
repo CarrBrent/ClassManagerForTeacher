@@ -6,6 +6,12 @@
         <item>中等</item>  
         <item>合格</item>          
         <item>不合格</item>          
+    </string-array>
+    <string-array name="vote_answer">  
+        <item>A</item>  
+        <item>B</item>          
+        <item>C</item>  
+        <item>D</item>          
     </string-array> 
     
 </resources>

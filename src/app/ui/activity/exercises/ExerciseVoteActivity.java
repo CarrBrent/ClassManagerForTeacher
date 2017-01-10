@@ -12,6 +12,9 @@ import java.util.List;
 
 
 
+
+
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -41,8 +44,11 @@ import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.Toast;
+import android.widget.AdapterView.OnItemSelectedListener;
 import app.ui.TitleActivity;
 import app.util.BaseInfo;
 public class ExerciseVoteActivity extends TitleActivity implements OnClickListener {
@@ -63,6 +69,8 @@ public class ExerciseVoteActivity extends TitleActivity implements OnClickListen
 	private String startVoteUrl="startvote.do";
 	private String endVoteUrl="endvote.do";
 	private String getVoteData="getvotedata.do";
+	private Spinner Answer;
+	private String correctAnswer;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -81,7 +89,21 @@ public class ExerciseVoteActivity extends TitleActivity implements OnClickListen
 		start = (Button) findViewById(R.id.startVote);
 		end  = (Button) findViewById(R.id.endVote);
 		refresh = (Button) findViewById(R.id.refreshVote);
+		Answer = (Spinner)findViewById(R.id.vote_answer);
 		
+		//下拉框的监听事件
+		Answer.setOnItemSelectedListener(new OnItemSelectedListener() {  
+            public void onItemSelected(AdapterView<?> key_value_arg0, View key_value_arg1,  
+                    int key_value_arg2, long key_value_arg3) {
+                // TODO Auto-generated method stub  
+            	correctAnswer=Answer.getSelectedItem().toString();
+            	//tv_key.setText(key_value.getSelectedItem().toString());
+            }  
+            public void onNothingSelected(AdapterView<?> arg0) {  
+                // TODO Auto-generated method stub  
+            }  
+        });  
+		//按钮设置监听事件
 		end.setOnClickListener(this);
 		start.setOnClickListener(this);
 		refresh.setOnClickListener(this);
@@ -113,6 +135,8 @@ public class ExerciseVoteActivity extends TitleActivity implements OnClickListen
 	private void startVote() {
 		final BaseInfo baseInfo = (BaseInfo)getApplication();
 		RequestParams params = new RequestParams();
+		params.addQueryStringParameter("seId", Integer.toString(seId));
+		params.addQueryStringParameter("correctAnswer", correctAnswer);
 		http.send(HttpRequest.HttpMethod.GET,
 				baseInfo.getUrl()+startVoteUrl,
 				params,
@@ -131,7 +155,7 @@ public class ExerciseVoteActivity extends TitleActivity implements OnClickListen
 				JSONObject jsonObject;
 				try {
 					jsonObject = new JSONObject(responseInfo.result);
-					setVoteId((Integer)jsonObject.get("voteId"));
+					setVoteId((Integer)jsonObject.get("qvid"));
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
