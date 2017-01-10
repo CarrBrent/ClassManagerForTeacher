@@ -78,8 +78,8 @@ public class ExerciseRushActivity extends TitleActivity implements OnClickListen
 		submit.setOnClickListener(this);
 
 	}
-	public void setRushId(String rushId) {
-		this.rushId = rushId;
+	public void setRushId(int rushId) {
+		this.rushId = Integer.toString(rushId);
 	}
 	@Override
 	public void onClick(View v) {
@@ -120,11 +120,11 @@ public class ExerciseRushActivity extends TitleActivity implements OnClickListen
 				try {
 					JSONObject jsonObject = new JSONObject(responseInfo.result);
 					String name = (String) jsonObject.get("name");
-					String sId = (String) jsonObject.get("sId");
-					String rushId = (String) jsonObject.get("rushId");
+					int sId = (Integer) jsonObject.get("sId");
+					int rushId = (Integer) jsonObject.get("rushId");
 					setRushId(rushId);
 					tvName.setText(name);
-					tvSId.setText(sId);
+					tvSId.setText(Integer.toString(sId));
 
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
@@ -159,11 +159,11 @@ public class ExerciseRushActivity extends TitleActivity implements OnClickListen
 				try {
 					JSONObject jsonObject = new JSONObject(responseInfo.result);
 					String name = (String) jsonObject.get("name");
-					String sId = (String) jsonObject.get("sId");
-					String rushId = (String) jsonObject.get("rushId");
+					int sId = (Integer) jsonObject.get("sId");
+					int rushId = (Integer) jsonObject.get("rushId");
 					setRushId(rushId);
 					tvName.setText(name);
-					tvSId.setText(sId);
+					tvSId.setText(Integer.toString(sId));
 					
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
