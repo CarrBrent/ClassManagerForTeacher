@@ -76,9 +76,9 @@ public class ServiceFragment extends BaseFragment implements Runnable{
 		
 		//将设置好的onClickListener关联到相应的layout
 		view.findViewById(R.id.layout_1).setOnClickListener(onClickListener);
-		view.findViewById(R.id.layout_2).setOnClickListener(onClickListener);
+		//view.findViewById(R.id.layout_2).setOnClickListener(onClickListener);
 		view.findViewById(R.id.layout_3).setOnClickListener(onClickListener);
-		view.findViewById(R.id.layout_4).setOnClickListener(onClickListener);
+		//view.findViewById(R.id.layout_4).setOnClickListener(onClickListener);
 		//guidepage
 		mViewPager = (ViewPager)view.findViewById(R.id.viewpager);
 		group = (ViewGroup)view.findViewById(R.id.viewGroup);

@@ -24,7 +24,6 @@
                 android:layout_width="fill_parent"
                 android:layout_height="@dimen/default_edittext_height"
                 android:layout_marginTop="5dp"
-                android:inputType="number"
                 android:maxLength="20"
                 android:paddingLeft="55dp"
                 android:paddingRight="60dp" >

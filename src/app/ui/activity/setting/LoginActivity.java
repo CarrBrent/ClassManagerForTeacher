@@ -185,21 +185,22 @@ public class LoginActivity extends TitleActivity implements OnClickListener{
 				try {
 					
 					jsonObject = new JSONObject(responseInfo.result);
-					SharedPreferences sharedPreferences = getSharedPreferences("teacher", Context.MODE_PRIVATE);
-					Editor editor = sharedPreferences.edit();//获取编辑器
+					
 					String tId=(String)jsonObject.get("tId");
-					editor.putString("tId",tId);
-					editor.commit();//提交修改
+					if (tId.equals("-1")) {
+						Toast.makeText(getApplicationContext(), "用户名或密码错误", 1).show();
+					}else {
+						SharedPreferences sharedPreferences = getSharedPreferences("teacher", Context.MODE_PRIVATE);
+						Editor editor = sharedPreferences.edit();//获取编辑器
+						editor.putString("tId",tId);
+						editor.commit();//提交修改
+						finish();
+					}
+					
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				
-				
-				Toast.makeText(getApplicationContext(), "登录成功", 1).show();
-				
-				finish();
-
 			}
 			@Override
 			public void onFailure(HttpException error, String msg) {

@@ -33,16 +33,19 @@ public class ExerciseRushActivity extends TitleActivity implements OnClickListen
 	private HttpUtils http = new HttpUtils();
 
 	private BaseInfo baseInfo;
-	private String rerushString = "reexerciserush.do";
-	private String startString = "startexerciserush.do";
-	private String submitString = "exerciserushsubmit.do";
+	private String rerushString = "restartResponder.do";
+	private String startString = "startResponder.do";
+	private String submitString = "endResponder.do";
+	private String findResponderStuString = "findResponderStu.do";
+
 	private String rerushurl;
+	private String findResponderUrl;
 	private String starturl;
 	private String submiturl;
 
 	private String seName;
 	private String seId;
-	private String rushId;
+	private int rdid;
 	private TextView tvName;
 	private TextView tvSId;
 
@@ -60,6 +63,7 @@ public class ExerciseRushActivity extends TitleActivity implements OnClickListen
 		starturl = baseInfo.getUrl()+startString;
 		submiturl = baseInfo.getUrl()+submitString;
 		rerushurl = baseInfo.getUrl()+rerushString;
+		findResponderUrl = baseInfo.getUrl()+findResponderStuString;
 
 		Intent intent = this.getIntent();
 		Bundle bundle = intent.getExtras();
@@ -78,8 +82,8 @@ public class ExerciseRushActivity extends TitleActivity implements OnClickListen
 		submit.setOnClickListener(this);
 
 	}
-	public void setRushId(int rushId) {
-		this.rushId = Integer.toString(rushId);
+	public void setRdid(int rdid) {
+		this.rdid = rdid;
 	}
 	@Override
 	public void onClick(View v) {
@@ -99,6 +103,40 @@ public class ExerciseRushActivity extends TitleActivity implements OnClickListen
 		}
 
 	}
+	public void findResponder(int rdid) {
+		RequestParams params = new RequestParams();
+		params.addQueryStringParameter("rdid",Integer.toString(rdid));
+		http.send(HttpRequest.HttpMethod.GET,
+				findResponderUrl,
+				params,
+				new RequestCallBack<String>() {
+
+			@Override
+			public void onStart() {
+			}
+			@Override
+			public void onLoading(long total, long current, boolean isUploading) {
+			}
+			@Override
+			public void onSuccess(ResponseInfo<String> responseInfo) {
+				try {
+					JSONObject jsonObject = new JSONObject(responseInfo.result);
+					int sId = (Integer) jsonObject.get("sId");
+					String name = (String) jsonObject.get("name");
+					tvName.setText(name);
+					tvSId.setText(Integer.toString(sId));
+
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			@Override
+			public void onFailure(HttpException error, String msg) {
+			}
+		});
+
+	}
 	public void start() {
 		RequestParams params = new RequestParams();
 		params.addQueryStringParameter("seId",seId);
@@ -116,21 +154,15 @@ public class ExerciseRushActivity extends TitleActivity implements OnClickListen
 			}
 			@Override
 			public void onSuccess(ResponseInfo<String> responseInfo) {
-
+				JSONObject jsonObject;
 				try {
-					JSONObject jsonObject = new JSONObject(responseInfo.result);
-					String name = (String) jsonObject.get("name");
-					int sId = (Integer) jsonObject.get("sId");
-					int rushId = (Integer) jsonObject.get("rushId");
-					setRushId(rushId);
-					tvName.setText(name);
-					tvSId.setText(Integer.toString(sId));
-
+					jsonObject = new JSONObject(responseInfo.result);
+					setRdid((Integer)jsonObject.get("rdid"));
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-
+				findResponder(rdid);
 			}
 			@Override
 			public void onFailure(HttpException error, String msg) {
@@ -139,13 +171,12 @@ public class ExerciseRushActivity extends TitleActivity implements OnClickListen
 	}
 	public void rerush() {
 		RequestParams params = new RequestParams();
-		params.addQueryStringParameter("seId",seId);
-		params.addQueryStringParameter("rushId",rushId);
+		params.addQueryStringParameter("rdid",Integer.toString(rdid));
 		http.send(HttpRequest.HttpMethod.GET,
 				rerushurl,
 				params,
 				new RequestCallBack<String>() {
-			
+
 			@Override
 			public void onStart() {
 			}
@@ -155,21 +186,16 @@ public class ExerciseRushActivity extends TitleActivity implements OnClickListen
 			}
 			@Override
 			public void onSuccess(ResponseInfo<String> responseInfo) {
-				
+				JSONObject jsonObject;
 				try {
-					JSONObject jsonObject = new JSONObject(responseInfo.result);
-					String name = (String) jsonObject.get("name");
-					int sId = (Integer) jsonObject.get("sId");
-					int rushId = (Integer) jsonObject.get("rushId");
-					setRushId(rushId);
-					tvName.setText(name);
-					tvSId.setText(Integer.toString(sId));
-					
+					jsonObject = new JSONObject(responseInfo.result);
+					setRdid((Integer)jsonObject.get("rdid"));
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				
+				findResponder(rdid);
+
 			}
 			@Override
 			public void onFailure(HttpException error, String msg) {
@@ -178,9 +204,7 @@ public class ExerciseRushActivity extends TitleActivity implements OnClickListen
 	}
 	public void submit() {
 		RequestParams params = new RequestParams();
-		params.addQueryStringParameter("seId",seId);
-		params.addQueryStringParameter("rushId",rushId);
-		params.addQueryStringParameter("sId",tvSId.getText().toString());
+		params.addQueryStringParameter("rdid",Integer.toString(rdid));
 		http.send(HttpRequest.HttpMethod.GET,
 				submiturl,
 				params,

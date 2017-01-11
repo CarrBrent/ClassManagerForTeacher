@@ -58,24 +58,6 @@
                     android:text="学生选课" />
             </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/layout_2"
-                android:padding="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_weight="10"
-                android:background="#12a3d5" >
-
-                <TextView
-                     android:drawablePadding="10dp"
-                    style="@style/text_white_bold_22"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableBottom="@drawable/a84"
-                    android:gravity="center_horizontal"
-                    android:text="小组讨论" />
-            </RelativeLayout>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -102,24 +84,6 @@
                     android:text="我的课程" />
             </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/layout_4"
-                android:padding="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_weight="10"
-                android:background="#12a3d5" >
-
-                <TextView
-                     android:drawablePadding="10dp"
-                    style="@style/text_white_bold_22"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableBottom="@drawable/a84"
-                    android:gravity="center_horizontal"
-                    android:text="小组讨论" />
-            </RelativeLayout>
         </LinearLayout>
 
 

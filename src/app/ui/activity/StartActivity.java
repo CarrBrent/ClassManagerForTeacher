@@ -100,8 +100,8 @@ public class StartActivity extends FragmentActivity implements OnTabChangeListen
     @Override
     public void onTabChange(String tag) {
     	//查看文件username 如果没有username的id则登录，否则显示个人的信息
-    	SharedPreferences sharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE);
-    	String userId = sharedPreferences.getString("userId", "null");
+    	SharedPreferences sharedPreferences = getSharedPreferences("teacher", Context.MODE_PRIVATE);
+    	String tId = sharedPreferences.getString("tId", "null");
 
         if (tag != null) {
            if ("service".equals(tag)) {
@@ -109,7 +109,7 @@ public class StartActivity extends FragmentActivity implements OnTabChangeListen
                 mCurrentTabIndex = 1;
                 mTitleTextView.setText(R.string.text_tab_service);
                 //如果没有登录，则进入登录界面
-                if (userId.equals("null")) {
+                if (tId.equals("null")) {
         			startActivity(new Intent(this, LoginActivity.class));
         		}
                 replaceFragment(ServiceFragment.class);
@@ -118,7 +118,7 @@ public class StartActivity extends FragmentActivity implements OnTabChangeListen
                 mCurrentTabIndex = 2;
                 mTitleTextView.setText(R.string.text_tab_profile);
                 //如果没有登录，则进入登录界面
-                if (userId.equals("null")) {
+                if (tId.equals("null")) {
         			startActivity(new Intent(this, LoginActivity.class));
         		}
                 replaceFragment(ProfileFragment.class);
@@ -127,7 +127,7 @@ public class StartActivity extends FragmentActivity implements OnTabChangeListen
                 mCurrentTabIndex = 3;
                 mTitleTextView.setText(R.string.text_tab_setting);
                 //如果没有登录，则进入登录界面
-                if (userId.equals("null")) {
+                if (tId.equals("null")) {
         			startActivity(new Intent(this, LoginActivity.class));
         		}
                 replaceFragment(SettingFragment.class);

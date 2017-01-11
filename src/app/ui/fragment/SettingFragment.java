@@ -40,9 +40,9 @@ public class SettingFragment extends BaseFragment implements OnClickListener {
 			startActivity(new Intent(getActivity(), BarCodeActivity.class));
 			break;
 		case R.id.layout_exit:
-			SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("user", Context.MODE_PRIVATE);
+			SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("teacher", Context.MODE_PRIVATE);
 			Editor editor = sharedPreferences.edit();//获取编辑器
-			editor.remove("userId");
+			editor.remove("tId");
 //			editor.putString("userId","null");
 			editor.commit();//提交修改
 

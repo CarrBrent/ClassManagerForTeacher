@@ -24,6 +24,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -38,9 +39,10 @@ public class SeminarStudentsActivity extends TitleActivity implements OnClickLis
 	 */
 	private ListView listView;
 	private TextView signInNo;
-	private String url = "findsigninstudentsbyseid.do";
+	private String url;
+	private String findsigninstudentsbyseid = "findsigninstudentsbyseid.do";
 	private HttpUtils http = new HttpUtils();
-
+    private Button refresh;
 	private String seName;
 	private String seId;
 	@Override
@@ -55,52 +57,36 @@ public class SeminarStudentsActivity extends TitleActivity implements OnClickLis
 		seName = bundle.getString("seName");
 		seId= Integer.toString(bundle.getInt("seId"));
 		setTitle(seName);
+		
+		// 设置缓存1秒,1秒内直接返回上次成功请求的结果
+		http.configCurrentHttpCacheExpiry(100);
 
 
-		//设置访问服务器时需要传递的参数
-		RequestParams params = new RequestParams();
-		params.addQueryStringParameter("seId",seId);
+		
 		final BaseInfo baseInfo = (BaseInfo)getApplication();
+		url = baseInfo.getUrl()+findsigninstudentsbyseid;
 
+		refresh =(Button)this.findViewById(R.id.refresh);
 		listView=(ListView)this.findViewById(R.id.listview); 
 		signInNo=(TextView)this.findViewById(R.id.signInNo);
+		refresh.setOnClickListener(this);
 		//通过访问服务器，获取数据
-		GetData(baseInfo.getUrl()+url, params);
-
-		//为每个item设置监听器
-		//		listView.setOnItemClickListener(new OnItemClickListener() {
-		//
-		//			@Override
-		//			public void onItemClick(AdapterView<?> arg0, View arg1,
-		//					int arg2, long arg3) {
-		//				// TODO Auto-generated method stub
-		//				Map map = (Map)listView.getItemAtPosition(arg2);
-		//				int seId = (Integer) map.get("seId");
-		//				int cId = (Integer) map.get("cId");
-		//				String seName = (String) map.get("seName");
-		//				String seTheme = (String) map.get("seTheme");
-		//				String seTime = map.get("seTime").toString();
-		//				int seUp = (Integer) map.get("seUp");
-		//				int seDown = (Integer) map.get("seDown");
-		//				Intent intent = new Intent();
-		//				intent.setClass(SeminarSAtudentsActivity.this, SeminarDetailActivity.class);
-		//				Bundle bundle = new Bundle();
-		//				bundle.putInt("seId",seId);
-		//				bundle.putInt("cId",cId);
-		//				bundle.putString("seName",seName);
-		//				bundle.putString("seTheme",seTheme);
-		//				bundle.putString("seTime",seTime);
-		//				bundle.putInt("seUp",seUp);
-		//				bundle.putInt("seDown",seDown);
-		//				intent.putExtras(bundle);
-		//				startActivity(intent);
-		//
-		//			}
-		//
-		//		});
-
+		GetData();
 
 	}
+	@Override
+    public void onClick(View v) {
+        super.onClick(v);
+        switch (v.getId()) {
+		case R.id.refresh:
+			GetData();
+			break;
+
+		default:
+			break;
+		}
+        
+    }
 
 
 	@Override
@@ -108,9 +94,12 @@ public class SeminarStudentsActivity extends TitleActivity implements OnClickLis
 		super.onBackward(backwardView);
 	}
 	//从服务器获取数据
-	private void GetData(String URL, RequestParams params){
+	private void GetData(){
+		//设置访问服务器时需要传递的参数
+		RequestParams params = new RequestParams();
+		params.addQueryStringParameter("seId",seId);
 		http.send(HttpRequest.HttpMethod.GET,
-				URL,
+				url,
 				params,
 				new RequestCallBack<String>() {
 

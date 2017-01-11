@@ -155,7 +155,7 @@ public class ExerciseVoteActivity extends TitleActivity implements OnClickListen
 				JSONObject jsonObject;
 				try {
 					jsonObject = new JSONObject(responseInfo.result);
-					setVoteId((Integer)jsonObject.get("qvid"));
+					setVoteId((Integer)jsonObject.get("vqid"));
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
