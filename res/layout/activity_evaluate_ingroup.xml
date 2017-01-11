@@ -29,7 +29,7 @@
                 android:layout_alignParentLeft="true"
                 android:duplicateParentState="true"
                 android:gravity="center_vertical"
-                android:text="组内评价时间(S)： " />
+                android:text="组内评价时间(M)： " />
 
             <EditText
                 android:id="@+id/timer"

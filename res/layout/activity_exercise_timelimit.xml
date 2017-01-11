@@ -58,7 +58,7 @@
                 android:layout_alignParentLeft="true"
                 android:duplicateParentState="true"
                 android:gravity="center_vertical"
-                android:text="默认答题时间(S)： " />
+                android:text="默认答题时间(M)： " />
 
             <TextView
                 android:id="@+id/defulttime"
@@ -125,7 +125,7 @@
                 android:layout_alignParentLeft="true"
                 android:duplicateParentState="true"
                 android:gravity="center_vertical"
-                android:text="答题时间限制(S)： " />
+                android:text="答题时间限制(M)： " />
 
             <EditText
                 android:id="@+id/timer"

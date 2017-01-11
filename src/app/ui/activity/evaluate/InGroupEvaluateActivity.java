@@ -123,7 +123,7 @@ public class InGroupEvaluateActivity extends TitleActivity implements OnClickLis
 			public void onSuccess(ResponseInfo<String> responseInfo) {
 				//访问成功之后设置倒计时
 				final String time = et.getText().toString();
-				int millisInFuture=Integer.parseInt(time);
+				int millisInFuture=Integer.parseInt(time)*60;
 				start.setClickable(false);
 				timer = new CountDownTimer(millisInFuture*1000, 1000) {
 

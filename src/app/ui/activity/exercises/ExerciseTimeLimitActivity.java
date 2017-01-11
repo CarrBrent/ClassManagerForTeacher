@@ -193,7 +193,7 @@ public class ExerciseTimeLimitActivity extends TitleActivity implements OnClickL
 			//访问成功之后执行该方法
 			public void onSuccess(ResponseInfo<String> responseInfo) {
 				//访问成功之后设置倒计时
-				int millisInFuture=Integer.parseInt(time);
+				int millisInFuture=Integer.parseInt(time)*60;
 				start.setClickable(false);
 				timer = new CountDownTimer(millisInFuture*1000, 1000) {
 
