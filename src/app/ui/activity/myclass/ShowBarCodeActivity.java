@@ -29,6 +29,7 @@ public class ShowBarCodeActivity extends TitleActivity implements OnClickListene
 	private Button showstudents;
 	private ImageView qrImgImageView;
 	private int seId;
+	private int cId;
 	private String seName;
 	
     @Override
@@ -40,6 +41,7 @@ public class ShowBarCodeActivity extends TitleActivity implements OnClickListene
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
         seId = bundle.getInt("seId");
+        cId = bundle.getInt("cId");
         seName = bundle.getString("seName");
         setTitle(seName);
 
@@ -51,6 +53,7 @@ public class ShowBarCodeActivity extends TitleActivity implements OnClickListene
 			JSONObject jsonObject = new JSONObject();
 			jsonObject.put("seId",seId);
 			jsonObject.put("seName",seName);
+			jsonObject.put("cId",cId);
 			
 				String contentString = jsonObject.toString();
 			if (!contentString.equals("")) {
