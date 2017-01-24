@@ -1,37 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/layout_myclass"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/row_height"
+    android:layout_height="wrap_content"
     android:background="@drawable/row_selector"
     android:paddingLeft="@dimen/row_padding_left"
-    android:paddingRight="@dimen/row_padding_right" >
+    android:paddingRight="@dimen/row_padding_right" 
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/grName"
-        style="@style/text_black_18"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:duplicateParentState="true"
-        android:gravity="center_vertical" />
-    
-    <TextView
-        style="@style/text_black_18"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_toRightOf="@id/grName"
-        android:duplicateParentState="true"
-        android:gravity="center_vertical" 
-        android:text=" 组员："/>
-    
-    <TextView
-        android:id="@+id/stNames"
-        style="@style/text_black_18"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_alignParentRight="true"
-        android:duplicateParentState="true"
-        android:gravity="center_vertical" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="horizontal" >
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/grName"
+            style="@style/text_black_18"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:duplicateParentState="true"
+            android:gravity="center_vertical" />
+        <TextView
+            style="@style/text_black_18"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/grName"
+            android:duplicateParentState="true"
+            android:gravity="center_vertical"
+            android:text="组   组员：" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/stNames"
+            style="@style/text_black_18"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:duplicateParentState="true"
+            android:gravity="center_vertical" />
+    </LinearLayout>
+
+</LinearLayout>
