@@ -8,23 +8,36 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true">
-
         <LinearLayout
-            android:id="@+id/layout_start"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/table_margin"
-            android:padding="@dimen/table_padding" >
-            <Button
-            android:id="@+id/start"
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/default_button_height"
-            android:layout_marginTop="30dp"
-            
-            android:background="@color/button_background"
-            android:gravity="center"
-            android:text="@string/test_startcourse"
-            android:textColor="@android:color/white" />
+                android:id="@+id/layout_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/start"
+                    android:layout_marginTop="30dp"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/default_button_height"
+                    android:layout_marginLeft="5dip"
+                    android:layout_marginRight="5dip"
+                    android:layout_weight="1"
+                    android:background="@color/button_background"
+                    android:text="上课"
+                    android:textColor="@android:color/white" />
+
+                <Button
+                    android:id="@+id/finish"
+                    android:layout_marginTop="30dp"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/default_button_height"
+                    android:layout_marginLeft="5dip"
+                    android:layout_marginRight="5dip"
+                    android:layout_weight="1"
+                    android:background="@color/button_background"
+                    android:text="下课"
+                    android:textColor="@android:color/white" />
+
 
         </LinearLayout>
     </RelativeLayout>
