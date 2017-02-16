@@ -27,7 +27,7 @@ import app.ui.TitleActivity;
 import app.util.BaseInfo;
 
 public class ExerciseRushActivity extends TitleActivity implements OnClickListener{
-	private Button rerush;
+	//删除重新抢答按钮	private Button rerush;
 	private Button start;
 	private Button submit;
 	private HttpUtils http = new HttpUtils();
@@ -74,10 +74,10 @@ public class ExerciseRushActivity extends TitleActivity implements OnClickListen
 		tvName = (TextView)this.findViewById(R.id.name);
 		tvSId = (TextView)this.findViewById(R.id.sId);
 
-		rerush = (Button)this.findViewById(R.id.rerush);
+//		rerush = (Button)this.findViewById(R.id.rerush);//删除重新抢答按钮
 		start = (Button)this.findViewById(R.id.rush);
 		submit = (Button)this.findViewById(R.id.submit);
-		rerush.setOnClickListener(this);
+//删除重新抢答按钮		rerush.setOnClickListener(this);
 		start.setOnClickListener(this);
 		submit.setOnClickListener(this);
 
@@ -89,9 +89,11 @@ public class ExerciseRushActivity extends TitleActivity implements OnClickListen
 	public void onClick(View v) {
 		super.onClick(v);//实现父类的onClick方法这样才可使使左上角的返回按钮生效
 		switch (v.getId()) {
-		case R.id.rerush:
-			rerush();
-			break;
+		
+		//删除重新抢答按钮		
+//		case R.id.rerush:
+//			rerush();
+//			break;
 		case R.id.rush:
 			start();
 			break;
