@@ -61,14 +61,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="10"
-                android:background="#12a3d5" >
+                android:background="@drawable/blockshape" >
 
                 <TextView
                     style="@style/text_white_bold_22"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawablePadding="30dp"
-                    android:drawableBottom="@drawable/a90"
+                    android:drawableBottom="@drawable/seminar1"
                     android:gravity="center_horizontal"
                     android:text="课堂分组" />
             </RelativeLayout>
@@ -80,14 +80,14 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
                 android:layout_weight="10"
-                android:background="#12a3d5" >
+                android:background="@drawable/blockshape" >
 
                 <TextView
                      android:drawablePadding="10dp"
                     style="@style/text_white_bold_22"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableBottom="@drawable/a84"
+                    android:drawableBottom="@drawable/seminar2"
                     android:gravity="center_horizontal"
                     android:text="练习题" />
             </RelativeLayout>
@@ -105,14 +105,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="10"
-                android:background="#12a3d5" >
+                android:background="@drawable/blockshape" >
 
                 <TextView
                     style="@style/text_white_bold_22"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawablePadding="30dp"
-                    android:drawableBottom="@drawable/a90"
+                    android:drawableBottom="@drawable/seminar3"
                     android:gravity="center_horizontal"
                     android:text="课堂评价" />
             </RelativeLayout>
@@ -124,14 +124,14 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
                 android:layout_weight="10"
-                android:background="#12a3d5" >
+                android:background="@drawable/blockshape" >
 
                 <TextView
                     android:drawablePadding="10dp"
                     style="@style/text_white_bold_22"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableBottom="@drawable/a84"
+                    android:drawableBottom="@drawable/seminar4"
                     android:gravity="center_horizontal"
                     android:text="选课分班" />
             </RelativeLayout>

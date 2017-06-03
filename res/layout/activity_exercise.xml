@@ -25,14 +25,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="10"
-                android:background="#12a3d5"
+                android:background="@drawable/blockshape"
                 android:padding="20dp" >
 
                 <TextView
                     style="@style/text_white_bold_22"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableBottom="@drawable/a90"
+                    android:drawableBottom="@drawable/exercise1"
                     android:drawablePadding="30dp"
                     android:gravity="center_horizontal"
                     android:text="限时练习题" />
@@ -44,14 +44,14 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
                 android:layout_weight="10"
-                android:background="#12a3d5"
+                android:background="@drawable/blockshape"
                 android:padding="10dp" >
 
                 <TextView
                     style="@style/text_white_bold_22"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableBottom="@drawable/a84"
+                    android:drawableBottom="@drawable/exercise2"
                     android:drawablePadding="10dp"
                     android:gravity="center_horizontal"
                     android:text="抢答题" />
@@ -70,14 +70,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="10"
-                android:background="#12a3d5"
+                android:background="@drawable/blockshape"
                 android:padding="20dp" >
 
                 <TextView
                     style="@style/text_white_bold_22"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableBottom="@drawable/a90"
+                    android:drawableBottom="@drawable/exercise3"
                     android:drawablePadding="30dp"
                     android:gravity="center_horizontal"
                     android:text="投票题" />
