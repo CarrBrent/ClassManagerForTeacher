@@ -82,6 +82,7 @@ public class ExerciseVoteActivity extends TitleActivity implements OnClickListen
 		Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
         seId = bundle.getInt("seId");
+        setTitle("投票题");
 
 		mColumnChartView = (ColumnChartView) findViewById(R.id.column);
 		mColumnChartView.setOnValueTouchListener(new ValueTouchListener());

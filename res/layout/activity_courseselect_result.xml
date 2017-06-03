@@ -10,8 +10,8 @@
     <LinearLayout
         android:id="@+id/layout_listview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="8"
+        android:layout_height="500dp"
+        android:layout_weight="7"
         android:layout_margin="@dimen/table_margin"
         android:background="@color/table_background"
         android:padding="@dimen/table_padding" >
