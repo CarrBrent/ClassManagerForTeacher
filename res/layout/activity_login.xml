@@ -96,7 +96,7 @@
                 android:layout_height="23dp"
                 android:layout_gravity="right|center_vertical"
                 android:layout_marginRight="33dp"
-                android:background="@drawable/back_arrow"
+                android:background="@drawable/shape"
                 android:visibility="invisible" />
         </FrameLayout>
 

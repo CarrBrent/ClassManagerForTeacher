@@ -121,7 +121,7 @@
                     android:layout_marginLeft="5dip"
                     android:layout_marginRight="5dip"
                     android:layout_weight="1"
-                    android:background="@color/button_background"
+                    android:background="@drawable/shape"
                     android:text="确定"
                     android:textColor="@android:color/white" />
 
@@ -132,7 +132,7 @@
                     android:layout_marginLeft="5dip"
                     android:layout_marginRight="5dip"
                     android:layout_weight="1"
-                    android:background="@color/button_background"
+                    android:background="@drawable/shape"
                     android:text="开始抢答"
                     android:textColor="@android:color/white" />
 <!-- 删除重新抢答按钮               

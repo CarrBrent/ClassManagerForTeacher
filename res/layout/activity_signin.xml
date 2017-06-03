@@ -24,9 +24,10 @@
                 style="@style/text_black_18"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/row_height"
-                android:background="@drawable/row_selector"
+                android:background="@drawable/shape"
                 android:gravity="center_vertical|center"
-                android:text="扫描二维码签到" />
+                android:text="扫描二维码签到"
+                android:textColor="@android:color/white"  />
         </LinearLayout>
 
         <LinearLayout

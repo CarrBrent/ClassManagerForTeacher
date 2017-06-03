@@ -94,7 +94,7 @@
                     android:layout_marginRight="5dip"
                     android:layout_marginLeft="5dip"
                     android:layout_weight="1"
-                    android:background="@color/button_background"
+                    android:background="@drawable/shape"
                     android:textColor="@android:color/white"
                     android:text="开始" />
 
@@ -105,7 +105,7 @@
                     android:layout_marginRight="5dip"
                     android:layout_marginLeft="5dip"
                     android:layout_weight="1"
-                    android:background="@color/button_background"
+                    android:background="@drawable/shape"
                     android:textColor="@android:color/white"
                     android:text="重置" />
             </LinearLayout>

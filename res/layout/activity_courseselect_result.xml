@@ -45,7 +45,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginRight="10dip"
                 android:layout_marginLeft="10dip"
-                android:background="@color/button_background"
+                android:background="@drawable/shape"
                 android:text="开始"
                 android:textColor="@android:color/white" />
         </LinearLayout>
@@ -63,7 +63,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginRight="10dip"
                 android:layout_marginLeft="10dip"
-                android:background="@color/button_background"
+                android:background="@drawable/shape"
                 android:text="刷新"
                 android:textColor="@android:color/white" />
         </LinearLayout>
@@ -80,7 +80,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginRight="10dip"
                 android:layout_marginLeft="10dip"
-                android:background="@color/button_background"
+                android:background="@drawable/shape"
                 android:text="结束"
                 android:textColor="@android:color/white" />
         </LinearLayout>
